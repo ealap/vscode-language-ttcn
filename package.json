@@ -2,7 +2,7 @@
     "name": "language-ttcn",
     "displayName": "TTCN-3 Language Support for Visual Studio Code",
     "description": "Provides TTCN-3 language support for Visual Studio Code",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "publisher": "ealap",
     "license": "MIT",
 	"preview": true,
@@ -11,16 +11,33 @@
 		"url": "https://github.com/ealap"
 	},
     "engines": {
-        "vscode": "^1.28.0"
+        "vscode": "^1.23.0"
     },
     "categories": [
         "Programming Languages"
     ],
+    "keywords": [
+        "ttcn-3",
+        "ttcn3",
+		"ttcn",
+		"highlighter",
+		"syntax"
+	],
     "contributes": {
         "languages": [{
             "id": "ttcn",
-            "aliases": ["TTCN", "ttcn"],
-            "extensions": [".ttcn",".ttcn3"],
+            "aliases": [
+                "TTCN-3",
+                "ttcn-3",
+                "TTCN3",
+                "ttcn3",
+                "TTCN",
+                "ttcn"
+            ],
+            "extensions": [
+                ".ttcn3",
+                ".ttcn"
+            ],
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{
@@ -29,6 +46,7 @@
             "path": "./syntaxes/ttcn.tmLanguage.json"
         }]
     },
+    "icon": "./images/vscode-icon-ttcn.png",
     "__metadata": {
 		"publisherDisplayName": "Emmanuel Alap"
 	}
