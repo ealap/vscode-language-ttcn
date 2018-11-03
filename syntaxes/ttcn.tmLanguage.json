@@ -1,430 +1,416 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "TTCN-3",
-	"patterns": [
-		{
-			"include": "#statements"
-		},
-		{
-			"include": "#expressions"
-		}
-	],
-	"repository": {
-		"impossible": {
-			"patterns": [
-				{
-					"match": "$.^"
-				}
-			]
-		},
-		"statements": {
-			"patterns": [
-				{
-					"include": "#strings"
-				},
-				{
-					"include": "#comments"
-				}
-			]
-		},
-		"expressions": {
-			"patterns": [
-				{
-					"include": "#keywords"
-				},
-				{
-					"include": "#notations"
-				},
-				{
-					"include": "#numbers"
-				},
-				{
-					"include": "#reserved-words"
-				},
-				{
-					"include": "#functions"
-				},
-				{
-					"include": "#symbols"
-				}
-			]
-		},
-		"strings": {
-			"name": "string.quoted.double.ttcn",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.ttcn",
-					"match": "\\\\."
-				}
-			]
-		},
-		"comments": {
-			"patterns": [
-				{
-					"comment": "line comment",
-					"name": "comment.block.documentation.ttcn",
-					"match": "//.*"
-				},
-				{
-					"comment": "block comment",
-					"name": "comment.line.double-dash.ttcn",
-					"begin": "/\\*",
-					"end": "\\*/"
-				}
-			]
-		},
-		"keywords": {
-			"patterns": [
-				{
-					"comment": "structural keywords",
-					"name": "support.function.module.ttcn",
-					"match": "\\b(type|module|port|var|timer|signature|template|function|altstep|testcase)\\b"
-				},
-				{
-					"comment": "constant keyword",
-					"name": "support.constant.definition.ttcn",
-					"match": "\\b(const|all)\\b"
-				},
-				{
-					"comment": "user-defined type",
-					"captures": {
-						"1": {
-							"name": "keyword.other.type.ttcn"
-						}
-					},
-					"match": "(?<!\\.)(?<=[,\\s])\\s*((\\p{Alpha}[[:alnum:]_]*)(?=[\\s]))\\s+((\\p{Alpha}[[:alnum:]_]*)\\s*(?=[,]))"
-				},
-				{
-					"comment": "user-defined type",
-					"captures": {
-						"1": {
-							"name": "keyword.other.type.ttcn"
-						}
-					},
-					"match": "(?<=[,])\\s*(\\p{Alpha}[[:alnum:]_]*)\\s+((\\p{Alpha}[[:alnum:]_]*)(?=[\\s\\)]))"
-				},
-				{
-					"comment": "of-clause definition",
-					"name": "entity.name.function.of.ttcn",
-					"match": "(?<=of)\\s*(\\p{Alpha}[[:alnum:]_]*)\\s*(\\p{Alpha}[[:alnum:]_]*)?"
-				},
-				{
-					"comment": "module identifier",
-					"name": "entity.name.function.module.ttcn",
-					"match": "(?<=from|module)\\s+(\\p{Alpha}[[:alnum:]_]*)(?=[\\s;$])"
-				},
-				{
-					"comment": "function/testcase/altstep identifier",
-					"name": "entity.name.method.function.ttcn",
-					"match": "(?<=function|testcase|altstep)\\s+(\\p{Alpha}[[:alnum:]_]*)(?=[\\(\\s$])"
-				}
-			]
-		},
-		"notations": {
-			"patterns": [
-				{
-					"name": "variable.parameter.assignment.ttcn",
-					"match": "(?<!\\.)(\\p{Alpha}[[:alnum:]_]*)\\s*(?=(:\\=))"
-				},
-				{
-					"name": "entity.name.method.round.ttcn",
-					"match": "(?<=[\\{\\(\\[\\s\\.])(\\p{Alpha}[[:alnum:]_]*)\\s*(?=[\\(])"
-				},
-				{
-					"name": "entity.name.method.dot.ttcn",
-					"match": "(?<=[\\.])(\\p{Alpha}[[:alnum:]_]*)"
-				},
-				{
-					"name": "keyword.other.class.dot.ttcn",
-					"match": "(?<=[\\{\\(\\[\\]\\s])(\\p{Alpha}[[:alnum:]_]*)(?=[\\.])"
-				}
-			]
-		},
-		"numbers": {
-			"patterns": [
-				{
-					"comment": "integer/float/decimal format",
-					"name": "constant.numeric.digits.ttcn",
-					"match": "(-?)\\b([0-9]+)\\b"
-				},
-				{
-					"comment": "binary/bitstring format",
-					"name": "constant.numeric.hexadecimal.ttcn",
-					"match": "'[0-1]+'B"
-				},
-				{
-					"comment": "octal/octetstring format",
-					"name": "constant.numeric.hexadecimal.ttcn",
-					"match": "'[0-7]+'O"
-				},
-				{
-					"comment": "hexadecimal/hexstring format",
-					"name": "constant.numeric.hexadecimal.ttcn",
-					"match": "'[0-9A-f]+'H"
-				},
-				{
-					"comment": "exponential format",
-					"name": "constant.numeric.exponent.ttcn",
-					"match": "\\b(-?)([0-9]+E(-?)[0-9]+)\\b"
-				}
-			]
-		},
-		"reserved-words": {
-			"patterns": [
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(action|activate|address|alive|alt|any|anytype|apply|assert|at)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(bitstring|boolean|break)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(catch|char|charstring|check|clear|complement|component|continue|control|create|configuration|conjunct|cont)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(deactivate|decmatch|default|display|do|done|delta|disjunct|duration)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(encode|enumerated|error|except|exception|execute|extends|extension|external)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(fail|false|float|for|friend|from|function|finished)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(getverdict|getcall|getreply|goto|group)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(hexstring|history)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(ifpresent|import|in|inconc|infinity|inout|integer|implies|inv)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(kill|killed)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(label|language|length|log)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(match|message|mixed|modifies|modulepar|mtc|mode)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(noblock|none|not_a_number|nowait|null|notinv|now)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(octetstring|of|omit|on|optional|out|override|onentry|onexit)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(param|pass|pattern|permutation|port|present|private|procedure|public|par|prev)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(raise|read|receive|record|recursive|repeat|reply|return|running|runs|realtime)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(select|self|send|sender|set|setencode|setverdict|signature|start|stop|subset|superset|system|seq|setstate|static|stepsize|stream)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(template|testcase|timeout|timer|to|trigger|true|type|timestamp)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(union|universal|unmap|until)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(value|valueof|var|variant|verdicttype|values)\\b"
-				},
-				{
-					"name": "keyword.other.ttcn",
-					"match": "\\b(with|wait)\\b"
-				}
-			]
-		},
-		"functions": {
-			"patterns": [
-				{
-					"comment": "program flow",
-					"name": "entity.name.method.program.flow.ttcn",
-					"match": "(?x) \\b(if|else|select|case|for|while|do|label|goto|stop|return|break|continue|log)\\b"
-				},
-				{
-					"comment": "program behavior",
-					"name": "entity.name.method.program.behavior.ttcn",
-					"match": "(?x) \\b(alt|repeate|interleave|activate|deactivate)\\b"
-				},
-				{
-					"comment": "connection configuration operations",
-					"name": "entity.name.method.operations.connection.ttcn",
-					"match": "(?x) \\b(connect|disconnect|map|unmap)\\b"
-				},
-				{
-					"comment": "test configuration operations",
-					"name": "entity.name.method.operations.test.ttcn",
-					"match": "(?x) \\b(connect|disconnect|map|unmap|create|start|stop|kill|alive|running|done|killed)\\b"
-				},
-				{
-					"comment": "reference configuration operations",
-					"name": "entity.name.method.operations.reference.ttcn",
-					"match": "(?x) \\b(mtc|system|self)\\b"
-				},
-				{
-					"comment": "message-based communication operations",
-					"name": "entity.name.method.operations.message.ttcn",
-					"match": "(?x) \\b(send|receive|trigger)\\b"
-				},
-				{
-					"comment": "procedure-based communication operations",
-					"name": "entity.name.method.operations.procedure.ttcn",
-					"match": "(?x) \\b(call|getcall|reply|getreply|raise|catch)\\b"
-				},
-				{
-					"comment": "examine communication operations",
-					"name": "entity.name.method.operations.examine.ttcn",
-					"match": "(?x) \\b(check)\\b"
-				},
-				{
-					"comment": "controlling operations",
-					"name": "entity.name.method.operations.control.ttcn",
-					"match": "(?x) \\b(clear|halt|checkstate)\\b"
-				},
-				{
-					"comment": "charstring converter functions",
-					"name": "entity.name.method.convert.ttcn",
-					"match": "(?x) \\b(char2int|char2oct|unichar2oct|unichar2int|str2int|str2hex|str2oct|str2float)\\b"
-				},
-				{
-					"comment": "int/float converter functions",
-					"name": "entity.name.method.convert.ttcn",
-					"match": "(?x) \\b(int2char|int2unichar|int2bit|int2enum|int2hex|int2oct|int2str|int2float|float2int)\\b"
-				},
-				{
-					"comment": "bitstring converter functions",
-					"name": "entity.name.method.convert.ttcn",
-					"match": "(?x) \\b(bit2int|bit2hex|bit2oct|bit2str)\\b"
-				},
-				{
-					"comment": "hexstring converter functions",
-					"name": "entity.name.method.convert.ttcn",
-					"match": "(?x) \\b(hex2int|hex2bit|hex2oct|hex2str)\\b"
-				},
-				{
-					"comment": "octetstring converter functions",
-					"name": "entity.name.method.convert.ttcn",
-					"match": "(?x) \\b(oct2int|oct2bit|oct2hex|oct2str|oct2char|oct2unichar)\\b"
-				},
-				{
-					"comment": "other converter functions",
-					"name": "entity.name.method.convert.ttcn",
-					"match": "(?x) \\b(enum2int|any2unistr)\\b"
-				},
-				{
-					"comment": "size functions",
-					"name": "entity.name.method.convert.ttcn",
-					"match": "(?x) \\b(lengthof|sizeof)\\b"
-				},
-				{
-					"comment": "presence-checker functions",
-					"name": "entity.name.method.convert.ttcn",
-					"match": "(?x) \\b(ispresent|ischosen|isvalue|isbound|istemplatekind)\\b"
-				},
-				{
-					"comment": "string/list handling functions",
-					"name": "entity.name.method.convert.ttcn",
-					"match": "(?x) \\b(regexp|substr|replace)\\b"
-				},
-				{
-					"comment": "codec functions",
-					"name": "entity.name.method.convert.ttcn",
-					"match": "(?x) \\b(encvalue|decvalue|encvalue_unichar|decvalue_unichar|encvalue_o|decvalue_o|get_stringencoding|remove_bom)\\b"
-				},
-				{
-					"comment": "other functions",
-					"name": "entity.name.method.convert.ttcn",
-					"match": "(?x) \\b(rnd|testcasename|hostid)\\b"
-				},
-				{
-					"comment": "modifiers",
-					"name": "support.constant.modifier.ttcn",
-					"match": "@\\b(decoded|default|deterministic|fuzzy|index|lazy|local|nocase)\\b"
-				}
-			]
-		},
-		"symbols": {
-			"patterns": [
-				{
-					"comment": "assignment operator symbol",
-					"name": "keyword.operator.new.assignment.ttcn",
-					"match": ":\\="
-				},
-				{
-					"comment": "communication operator symbol",
-					"name": "keyword.operator.new.communication.ttcn",
-					"match": "-\\>"
-				},
-				{
-					"comment": "decoded field reference symbol",
-					"name": "keyword.operator.new.decode.ttcn",
-					"match": "\\=\\>"
-				},
-				{
-					"comment": "statement separator symbol",
-					"name": "string.unquoted.separator.ttcn",
-					"match": "[\\.;,]"
-				},
-				{
-					"comment": "wildcard/matching symbol",
-					"name": "constant.other.wildcard.ttcn",
-					"match": "[\\?\\*]"
-				},
-				{
-					"name": "keyword.operator.arithmetic.ttcn",
-					"match": "\\b\\s*(\\+|-|\\*|/|mod|rem)\\s*\\b"
-				},
-				{
-					"name": "keyword.operator.concatenation.ttcn",
-					"match": "&"
-				},
-				{
-					"name": "keyword.operator.relational.ttcn",
-					"match": "(\\=\\=)|(\\!\\=)|(\\b\\s*(\\<)\\s*\\b)|(\\b\\s*(\\<\\=)\\s*\\b)|(\\b\\s*(\\>)\\s*\\b)|(\\b\\s*(\\>\\=)\\s*\\b)"
-				},
-				{
-					"name": "keyword.operator.logical.ttcn",
-					"match": "\\b(not|and|or|xor)\\b"
-				},
-				{
-					"name": "keyword.operator.bitwise.ttcn",
-					"match": "\\b(not4b|and4b|or4b|xor4b)\\b"
-				},
-				{
-					"name": "keyword.operator.shift.ttcn",
-					"match": "(\\<\\<)|(\\>\\>)"
-				},
-				{
-					"name": "keyword.operator.rotate.ttcn",
-					"match": "(\\<@)|(@\\>)"
-				}
-			]
-		}
-	},
-	"scopeName": "source.ttcn"
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "TTCN-3",
+    "patterns": [{
+            "include": "#statements"
+        },
+        {
+            "include": "#expressions"
+        }
+    ],
+    "repository": {
+        "impossible": {
+            "patterns": [{
+                "match": "$.^"
+            }]
+        },
+        "statements": {
+            "patterns": [{
+                    "include": "#strings"
+                },
+                {
+                    "include": "#comments"
+                }
+            ]
+        },
+        "expressions": {
+            "patterns": [{
+                    "include": "#keywords"
+                },
+                {
+                    "include": "#notations"
+                },
+                {
+                    "include": "#numbers"
+                },
+                {
+                    "include": "#reserved-words"
+                },
+                {
+                    "include": "#functions"
+                },
+                {
+                    "include": "#symbols"
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.double.ttcn",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [{
+                "name": "constant.character.escape.ttcn",
+                "match": "\\\\."
+            }]
+        },
+        "comments": {
+            "patterns": [{
+                    "comment": "line comment",
+                    "name": "comment.block.documentation.ttcn",
+                    "match": "//.*"
+                },
+                {
+                    "comment": "block comment",
+                    "name": "comment.line.double-dash.ttcn",
+                    "begin": "/\\*",
+                    "end": "\\*/"
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [{
+                    "comment": "structural keywords",
+                    "name": "support.function.module.ttcn",
+                    "match": "\\b(type|module|port|var|timer|signature|template|function|altstep|testcase)\\b"
+                },
+                {
+                    "comment": "constant keyword",
+                    "name": "support.constant.definition.ttcn",
+                    "match": "\\b(const|all)\\b"
+                },
+                {
+                    "comment": "user-defined type",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.other.type.ttcn"
+                        }
+                    },
+                    "match": "(?<!\\.)(?<=[,\\s])\\s*((\\p{Alpha}[[:alnum:]_]*)(?=[\\s]))\\s+((\\p{Alpha}[[:alnum:]_]*)\\s*(?=[,]))"
+                },
+                {
+                    "comment": "user-defined type",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.other.type.ttcn"
+                        }
+                    },
+                    "match": "(?<=[,])\\s*(\\p{Alpha}[[:alnum:]_]*)\\s+((\\p{Alpha}[[:alnum:]_]*)(?=[\\s\\)]))"
+                },
+                {
+                    "comment": "of-clause definition",
+                    "name": "entity.name.function.of.ttcn",
+                    "match": "(?<=of)\\s*(\\p{Alpha}[[:alnum:]_]*)\\s*(\\p{Alpha}[[:alnum:]_]*)?"
+                },
+                {
+                    "comment": "module identifier",
+                    "name": "entity.name.function.module.ttcn",
+                    "match": "(?<=from|module)\\s+(\\p{Alpha}[[:alnum:]_]*)(?=[\\s;$])"
+                },
+                {
+                    "comment": "function/testcase/altstep identifier",
+                    "name": "entity.name.method.function.ttcn",
+                    "match": "(?<=function|testcase|altstep)\\s+(\\p{Alpha}[[:alnum:]_]*)(?=[\\(\\s$])"
+                }
+            ]
+        },
+        "notations": {
+            "patterns": [{
+                    "name": "variable.parameter.assignment.ttcn",
+                    "match": "(?<!\\.)(\\p{Alpha}[[:alnum:]_]*)\\s*(?=(:\\=))"
+                },
+                {
+                    "name": "entity.name.method.round.ttcn",
+                    "match": "(?<=[\\{\\(\\[\\s\\.])(\\p{Alpha}[[:alnum:]_]*)\\s*(?=[\\(])"
+                },
+                {
+                    "name": "entity.name.method.dot.ttcn",
+                    "match": "(?<=[\\.])(\\p{Alpha}[[:alnum:]_]*)"
+                },
+                {
+                    "name": "keyword.other.class.dot.ttcn",
+                    "match": "(?<=[\\{\\(\\[\\]\\s])(\\p{Alpha}[[:alnum:]_]*)(?=[\\.])"
+                }
+            ]
+        },
+        "numbers": {
+            "patterns": [{
+                    "comment": "integer/float/decimal format",
+                    "name": "constant.numeric.digits.ttcn",
+                    "match": "(-?)\\b([0-9]+)\\b"
+                },
+                {
+                    "comment": "binary/bitstring format",
+                    "name": "constant.numeric.hexadecimal.ttcn",
+                    "match": "'[0-1]+'B"
+                },
+                {
+                    "comment": "octal/octetstring format",
+                    "name": "constant.numeric.hexadecimal.ttcn",
+                    "match": "'[0-7]+'O"
+                },
+                {
+                    "comment": "hexadecimal/hexstring format",
+                    "name": "constant.numeric.hexadecimal.ttcn",
+                    "match": "'[0-9A-f]+'H"
+                },
+                {
+                    "comment": "exponential format",
+                    "name": "constant.numeric.exponent.ttcn",
+                    "match": "\\b(-?)([0-9]+E(-?)[0-9]+)\\b"
+                }
+            ]
+        },
+        "reserved-words": {
+            "patterns": [{
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(action|activate|address|alive|alt|any|anytype|apply|assert|at)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(bitstring|boolean|break)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(catch|char|charstring|check|clear|complement|component|continue|control|create|configuration|conjunct|cont)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(deactivate|decmatch|default|display|do|done|delta|disjunct|duration)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(encode|enumerated|error|except|exception|execute|extends|extension|external)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(fail|false|float|for|friend|from|function|finished)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(getverdict|getcall|getreply|goto|group)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(hexstring|history)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(ifpresent|import|in|inconc|infinity|inout|integer|implies|inv)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(kill|killed)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(label|language|length|log)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(match|message|mixed|modifies|modulepar|mtc|mode)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(noblock|none|not_a_number|nowait|null|notinv|now)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(octetstring|of|omit|on|optional|out|override|onentry|onexit)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(param|pass|pattern|permutation|port|present|private|procedure|public|par|prev)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(raise|read|receive|record|recursive|repeat|reply|return|running|runs|realtime)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(select|self|send|sender|set|setencode|setverdict|signature|start|stop|subset|superset|system|seq|setstate|static|stepsize|stream)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(template|testcase|timeout|timer|to|trigger|true|type|timestamp)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(union|universal|unmap|until)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(value|valueof|var|variant|verdicttype|values)\\b"
+                },
+                {
+                    "name": "keyword.other.ttcn",
+                    "match": "\\b(with|wait)\\b"
+                }
+            ]
+        },
+        "functions": {
+            "patterns": [{
+                    "comment": "program flow",
+                    "name": "entity.name.method.program.flow.ttcn",
+                    "match": "(?x) \\b(if|else|select|case|for|while|do|label|goto|stop|return|break|continue|log)\\b"
+                },
+                {
+                    "comment": "program behavior",
+                    "name": "entity.name.method.program.behavior.ttcn",
+                    "match": "(?x) \\b(alt|repeate|interleave|activate|deactivate)\\b"
+                },
+                {
+                    "comment": "connection configuration operations",
+                    "name": "entity.name.method.operations.connection.ttcn",
+                    "match": "(?x) \\b(connect|disconnect|map|unmap)\\b"
+                },
+                {
+                    "comment": "test configuration operations",
+                    "name": "entity.name.method.operations.test.ttcn",
+                    "match": "(?x) \\b(connect|disconnect|map|unmap|create|start|stop|kill|alive|running|done|killed)\\b"
+                },
+                {
+                    "comment": "reference configuration operations",
+                    "name": "entity.name.method.operations.reference.ttcn",
+                    "match": "(?x) \\b(mtc|system|self)\\b"
+                },
+                {
+                    "comment": "message-based communication operations",
+                    "name": "entity.name.method.operations.message.ttcn",
+                    "match": "(?x) \\b(send|receive|trigger)\\b"
+                },
+                {
+                    "comment": "procedure-based communication operations",
+                    "name": "entity.name.method.operations.procedure.ttcn",
+                    "match": "(?x) \\b(call|getcall|reply|getreply|raise|catch)\\b"
+                },
+                {
+                    "comment": "examine communication operations",
+                    "name": "entity.name.method.operations.examine.ttcn",
+                    "match": "(?x) \\b(check)\\b"
+                },
+                {
+                    "comment": "controlling operations",
+                    "name": "entity.name.method.operations.control.ttcn",
+                    "match": "(?x) \\b(clear|halt|checkstate)\\b"
+                },
+                {
+                    "comment": "charstring converter functions",
+                    "name": "entity.name.method.convert.ttcn",
+                    "match": "(?x) \\b(char2int|char2oct|unichar2oct|unichar2int|str2int|str2hex|str2oct|str2float)\\b"
+                },
+                {
+                    "comment": "int/float converter functions",
+                    "name": "entity.name.method.convert.ttcn",
+                    "match": "(?x) \\b(int2char|int2unichar|int2bit|int2enum|int2hex|int2oct|int2str|int2float|float2int)\\b"
+                },
+                {
+                    "comment": "bitstring converter functions",
+                    "name": "entity.name.method.convert.ttcn",
+                    "match": "(?x) \\b(bit2int|bit2hex|bit2oct|bit2str)\\b"
+                },
+                {
+                    "comment": "hexstring converter functions",
+                    "name": "entity.name.method.convert.ttcn",
+                    "match": "(?x) \\b(hex2int|hex2bit|hex2oct|hex2str)\\b"
+                },
+                {
+                    "comment": "octetstring converter functions",
+                    "name": "entity.name.method.convert.ttcn",
+                    "match": "(?x) \\b(oct2int|oct2bit|oct2hex|oct2str|oct2char|oct2unichar)\\b"
+                },
+                {
+                    "comment": "other converter functions",
+                    "name": "entity.name.method.convert.ttcn",
+                    "match": "(?x) \\b(enum2int|any2unistr)\\b"
+                },
+                {
+                    "comment": "size functions",
+                    "name": "entity.name.method.convert.ttcn",
+                    "match": "(?x) \\b(lengthof|sizeof)\\b"
+                },
+                {
+                    "comment": "presence-checker functions",
+                    "name": "entity.name.method.convert.ttcn",
+                    "match": "(?x) \\b(ispresent|ischosen|isvalue|isbound|istemplatekind)\\b"
+                },
+                {
+                    "comment": "string/list handling functions",
+                    "name": "entity.name.method.convert.ttcn",
+                    "match": "(?x) \\b(regexp|substr|replace)\\b"
+                },
+                {
+                    "comment": "codec functions",
+                    "name": "entity.name.method.convert.ttcn",
+                    "match": "(?x) \\b(encvalue|decvalue|encvalue_unichar|decvalue_unichar|encvalue_o|decvalue_o|get_stringencoding|remove_bom)\\b"
+                },
+                {
+                    "comment": "other functions",
+                    "name": "entity.name.method.convert.ttcn",
+                    "match": "(?x) \\b(rnd|testcasename|hostid)\\b"
+                },
+                {
+                    "comment": "modifiers",
+                    "name": "support.constant.modifier.ttcn",
+                    "match": "@\\b(decoded|default|deterministic|fuzzy|index|lazy|local|nocase)\\b"
+                }
+            ]
+        },
+        "symbols": {
+            "patterns": [{
+                    "comment": "assignment operator symbol",
+                    "name": "keyword.operator.new.assignment.ttcn",
+                    "match": ":\\="
+                },
+                {
+                    "comment": "communication operator symbol",
+                    "name": "keyword.operator.new.communication.ttcn",
+                    "match": "-\\>"
+                },
+                {
+                    "comment": "decoded field reference symbol",
+                    "name": "keyword.operator.new.decode.ttcn",
+                    "match": "\\=\\>"
+                },
+                {
+                    "comment": "statement separator symbol",
+                    "name": "string.unquoted.separator.ttcn",
+                    "match": "[\\.;,]"
+                },
+                {
+                    "comment": "wildcard/matching symbol",
+                    "name": "constant.other.wildcard.ttcn",
+                    "match": "[\\?\\*]"
+                },
+                {
+                    "name": "keyword.operator.arithmetic.ttcn",
+                    "match": "\\b\\s*(\\+|-|\\*|/|mod|rem)\\s*\\b"
+                },
+                {
+                    "name": "keyword.operator.concatenation.ttcn",
+                    "match": "&"
+                },
+                {
+                    "name": "keyword.operator.relational.ttcn",
+                    "match": "(\\=\\=)|(\\!\\=)|(\\b\\s*(\\<)\\s*\\b)|(\\b\\s*(\\<\\=)\\s*\\b)|(\\b\\s*(\\>)\\s*\\b)|(\\b\\s*(\\>\\=)\\s*\\b)"
+                },
+                {
+                    "name": "keyword.operator.logical.ttcn",
+                    "match": "\\b(not|and|or|xor)\\b"
+                },
+                {
+                    "name": "keyword.operator.bitwise.ttcn",
+                    "match": "\\b(not4b|and4b|or4b|xor4b)\\b"
+                },
+                {
+                    "name": "keyword.operator.shift.ttcn",
+                    "match": "(\\<\\<)|(\\>\\>)"
+                },
+                {
+                    "name": "keyword.operator.rotate.ttcn",
+                    "match": "(\\<@)|(@\\>)"
+                }
+            ]
+        }
+    },
+    "scopeName": "source.ttcn"
 }
