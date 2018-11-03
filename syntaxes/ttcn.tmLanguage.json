@@ -1,6 +1,6 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "TTCN",
+	"name": "TTCN-3",
 	"patterns": [
 		{
 			"include": "#statements"
@@ -94,7 +94,7 @@
 							"name": "keyword.other.type.ttcn"
 						}
 					},
-					"match": "((\\p{Alpha}[[:alnum:]_]*)(?=[\\s]))\\s+((\\p{Alpha}[[:alnum:]_]*)(?=[,]))"
+					"match": "(?<!\\.)(?<=[,\\s])\\s*((\\p{Alpha}[[:alnum:]_]*)(?=[\\s]))\\s+((\\p{Alpha}[[:alnum:]_]*)\\s*(?=[,]))"
 				},
 				{
 					"comment": "user-defined type",
@@ -111,14 +111,14 @@
 					"match": "(?<=of)\\s*(\\p{Alpha}[[:alnum:]_]*)\\s*(\\p{Alpha}[[:alnum:]_]*)?"
 				},
 				{
-					"comment": "imported module identifier",
+					"comment": "module identifier",
 					"name": "entity.name.function.module.ttcn",
-					"match": "(?<=from)\\s+(\\p{Alpha}[[:alnum:]_]*)(?=[\\s;$])"
+					"match": "(?<=from|module)\\s+(\\p{Alpha}[[:alnum:]_]*)(?=[\\s;$])"
 				},
 				{
-					"comment": "function identifier",
+					"comment": "function/testcase/altstep identifier",
 					"name": "entity.name.method.function.ttcn",
-					"match": "(?<=function)\\s+(\\p{Alpha}[[:alnum:]_]*)(?=[\\(\\s$])"
+					"match": "(?<=function|testcase|altstep)\\s+(\\p{Alpha}[[:alnum:]_]*)(?=[\\(\\s$])"
 				}
 			]
 		},
@@ -126,11 +126,7 @@
 			"patterns": [
 				{
 					"name": "variable.parameter.assignment.ttcn",
-					"match": "(\\p{Alpha}[[:alnum:]_]*)\\s*(?=(:\\=))"
-				},
-				{
-					"name": "entity.name.function.curly.ttcn",
-					"match": "(?<=[\\{\\(\\[\\s\\.])(\\p{Alpha}[[:alnum:]_]*)\\s*(?=[\\{])"
+					"match": "(?<!\\.)(\\p{Alpha}[[:alnum:]_]*)\\s*(?=(:\\=))"
 				},
 				{
 					"name": "entity.name.method.round.ttcn",
@@ -142,7 +138,7 @@
 				},
 				{
 					"name": "keyword.other.class.dot.ttcn",
-					"match": "(?<=[\\{\\(\\[\\s])(\\p{Alpha}[[:alnum:]_]*)(?=[\\.])"
+					"match": "(?<=[\\{\\(\\[\\]\\s])(\\p{Alpha}[[:alnum:]_]*)(?=[\\.])"
 				}
 			]
 		},
