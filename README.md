@@ -8,7 +8,7 @@ Provides TTCN-3 language support for Visual Studio Code
 
 ### Release Notes
 #### 0.2.0
-- Fixed issue with identifiers not colorized when curly brace is type on the next line
+- Fixed issue with identifiers not colorized when curly brace is typed on the next line
 - Fixed issue with user-defined types mix matching to other rules
 - Added extension icon
 
