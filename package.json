@@ -5,24 +5,28 @@
     "version": "0.2.0",
     "publisher": "ealap",
     "license": "MIT",
-	"preview": true,
+    "preview": true,
     "author": {
-		"name": "Emmanuel Alap",
-		"url": "https://github.com/ealap"
-	},
+        "name": "Emmanuel Alap",
+        "url": "https://github.com/ealap"
+    },
     "engines": {
         "vscode": "^1.23.0"
     },
     "categories": [
         "Programming Languages"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ealap/vscode-language-ttcn"
+    },
     "keywords": [
         "ttcn-3",
         "ttcn3",
-		"ttcn",
-		"highlighter",
-		"syntax"
-	],
+        "ttcn",
+        "highlighter",
+        "syntax"
+    ],
     "contributes": {
         "languages": [{
             "id": "ttcn",
@@ -48,6 +52,6 @@
     },
     "icon": "./images/vscode-icon-ttcn.png",
     "__metadata": {
-		"publisherDisplayName": "Emmanuel Alap"
-	}
+        "publisherDisplayName": "Emmanuel Alap"
+    }
 }
