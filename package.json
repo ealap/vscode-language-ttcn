@@ -50,7 +50,7 @@
             "path": "./syntaxes/ttcn.tmLanguage.json"
         }]
     },
-    "icon": "./images/vscode-icon-ttcn.png",
+    "icon": "images/vscode-icon-ttcn.png",
     "__metadata": {
         "publisherDisplayName": "Emmanuel Alap"
     }
