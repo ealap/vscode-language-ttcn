@@ -4,9 +4,14 @@
 Provides TTCN-3 language support for Visual Studio Code
 
 ### Features
-- Syntax highlighting
+- Syntax highlighting<br /><p><img src="https://raw.githubusercontent.com/ealap/vscode-language-ttcn/dev-ealap/images/vscode-ss-ttcn3.png" alt="Figure 001. TTCN-3 Sample Code" /></p>
 
 ### Release Notes
+#### 0.2.0
+- Fixed issue with identifiers not colorized when curly brace is type on the next line
+- Fixed issue with user-defined types mix matching to other rules
+- Added extension icon
+
 #### 0.1.0
 - Initial release
 
