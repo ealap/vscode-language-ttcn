@@ -85,7 +85,7 @@
                             "name": "keyword.other.type.ttcn"
                         }
                     },
-                    "match": "(?<!\\.)(?<=[,\\s])\\s*((\\p{Alpha}[[:alnum:]_]*)(?=[\\s]))\\s+((\\p{Alpha}[[:alnum:]_]*)\\s*(?=[,]))"
+                    "match": "(?<!\\.)(?<=[,\\s\\(])\\s*((\\p{Alpha}[[:alnum:]_]*)(?=[\\s]))\\s+((\\p{Alpha}[[:alnum:]_]*)\\s*(?=[,\\)]))"
                 },
                 {
                     "comment": "user-defined type",
@@ -94,7 +94,7 @@
                             "name": "keyword.other.type.ttcn"
                         }
                     },
-                    "match": "(?<=[,])\\s*(\\p{Alpha}[[:alnum:]_]*)\\s+((\\p{Alpha}[[:alnum:]_]*)(?=[\\s\\)]))"
+                    "match": "(?<=[,\\(])\\s*(\\p{Alpha}[[:alnum:]_]*)\\s+((\\p{Alpha}[[:alnum:]_]*)(?!\\s\\w)\\s*(?=[,\\s\\)]))"
                 },
                 {
                     "comment": "of-clause definition",
@@ -139,24 +139,44 @@
                     "match": "(-?)\\b([0-9]+)\\b"
                 },
                 {
-                    "comment": "binary/bitstring format",
+                    "comment": "bitstring format",
                     "name": "constant.numeric.hexadecimal.ttcn",
-                    "match": "'[0-1]+'B"
+                    "match": "'[0-1\\\\\\s]*'B"
                 },
                 {
-                    "comment": "octal/octetstring format",
+                    "comment": "octetstring format",
                     "name": "constant.numeric.hexadecimal.ttcn",
-                    "match": "'[0-7]+'O"
+                    "match": "'[^\\S]*([0-9A-f][^\\S]*[0-9A-f][^\\S]*)*'O"
                 },
                 {
-                    "comment": "hexadecimal/hexstring format",
+                    "comment": "hexstring format",
                     "name": "constant.numeric.hexadecimal.ttcn",
-                    "match": "'[0-9A-f]+'H"
+                    "match": "'[0-9A-f\\\\\\s]*'H"
                 },
                 {
                     "comment": "exponential format",
                     "name": "constant.numeric.exponent.ttcn",
                     "match": "\\b(-?)([0-9]+E(-?)[0-9]+)\\b"
+                },
+                {
+                    "comment": "special number: not_a_number",
+                    "name": "constant.numeric.exponent.ttcn",
+                    "match": "(?<!-)\\b(not_a_number)\\b"
+                },
+                {
+                    "comment": "special number: infinity",
+                    "name": "constant.numeric.exponent.ttcn",
+                    "match": "(-?)\\b(infinity)\\b"
+                },
+                {
+                    "comment": "boolean",
+                    "name": "constant.numeric.exponent.ttcn",
+                    "match": "\\b(true|false)\\b"
+                },
+                {
+                    "comment": "verdicttype",
+                    "name": "constant.numeric.exponent.ttcn",
+                    "match": "\\b(pass|fail|inconc|none|error)\\b"
                 }
             ]
         },

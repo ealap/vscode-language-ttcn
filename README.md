@@ -1,4 +1,8 @@
 # vscode-language-ttcn
+
+[![Visual Studio Marketplace](https://vsmarketplacebadge.apphb.com/version/ealap.language-ttcn.svg)](https://marketplace.visualstudio.com/items?itemName=ealap.language-ttcn)
+[![Installs](https://vsmarketplacebadge.apphb.com/installs/ealap.language-ttcn.svg)](https://marketplace.visualstudio.com/items?itemName=ealap.language-ttcnx)
+
 ## TTCN-3 Language Support for Visual Studio Code
 
 Provides TTCN-3 language support for Visual Studio Code
@@ -7,6 +11,10 @@ Provides TTCN-3 language support for Visual Studio Code
 - Syntax highlighting<br /><p><img src="https://raw.githubusercontent.com/ealap/vscode-language-ttcn/dev-ealap/images/vscode-ss-ttcn3.png" alt="Figure 001. TTCN-3 Sample Code" /></p>
 
 ### Release Notes
+#### 0.3.0
+- Fixed issue with highlighting user-defined types
+- Fixed issue with highlighting numeric strings
+
 #### 0.2.0
 - Fixed issue with identifiers not colorized when curly brace is typed on the next line
 - Fixed issue with user-defined types mix matching to other rules
