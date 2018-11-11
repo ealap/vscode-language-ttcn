@@ -139,19 +139,19 @@
                     "match": "(-?)\\b([0-9]+)\\b"
                 },
                 {
-                    "comment": "binary/bitstring format",
+                    "comment": "bitstring format",
                     "name": "constant.numeric.hexadecimal.ttcn",
-                    "match": "'[0-1]+'B"
+                    "match": "'[0-1\\\\\\s]*'B"
                 },
                 {
-                    "comment": "octal/octetstring format",
+                    "comment": "octetstring format",
                     "name": "constant.numeric.hexadecimal.ttcn",
-                    "match": "'[0-7]+'O"
+                    "match": "'[^\\S]*([0-9A-f][^\\S]*[0-9A-f][^\\S]*)*'O"
                 },
                 {
-                    "comment": "hexadecimal/hexstring format",
+                    "comment": "hexstring format",
                     "name": "constant.numeric.hexadecimal.ttcn",
-                    "match": "'[0-9A-f]+'H"
+                    "match": "'[0-9A-f\\\\\\s]*'H"
                 },
                 {
                     "comment": "exponential format",
