@@ -157,6 +157,26 @@
                     "comment": "exponential format",
                     "name": "constant.numeric.exponent.ttcn",
                     "match": "\\b(-?)([0-9]+E(-?)[0-9]+)\\b"
+                },
+                {
+                    "comment": "special number: not_a_number",
+                    "name": "constant.numeric.exponent.ttcn",
+                    "match": "(?<!-)\\b(not_a_number)\\b"
+                },
+                {
+                    "comment": "special number: infinity",
+                    "name": "constant.numeric.exponent.ttcn",
+                    "match": "(-?)\\b(infinity)\\b"
+                },
+                {
+                    "comment": "boolean",
+                    "name": "constant.numeric.exponent.ttcn",
+                    "match": "\\b(true|false)\\b"
+                },
+                {
+                    "comment": "verdicttype",
+                    "name": "constant.numeric.exponent.ttcn",
+                    "match": "\\b(pass|fail|inconc|none|error)\\b"
                 }
             ]
         },
