@@ -85,7 +85,7 @@
                             "name": "keyword.other.type.ttcn"
                         }
                     },
-                    "match": "(?<!\\.)(?<=[,\\s])\\s*((\\p{Alpha}[[:alnum:]_]*)(?=[\\s]))\\s+((\\p{Alpha}[[:alnum:]_]*)\\s*(?=[,]))"
+                    "match": "(?<!\\.)(?<=[,\\s\\(])\\s*((\\p{Alpha}[[:alnum:]_]*)(?=[\\s]))\\s+((\\p{Alpha}[[:alnum:]_]*)\\s*(?=[,\\)]))"
                 },
                 {
                     "comment": "user-defined type",
@@ -94,7 +94,7 @@
                             "name": "keyword.other.type.ttcn"
                         }
                     },
-                    "match": "(?<=[,])\\s*(\\p{Alpha}[[:alnum:]_]*)\\s+((\\p{Alpha}[[:alnum:]_]*)(?=[\\s\\)]))"
+                    "match": "(?<=[,\\(])\\s*(\\p{Alpha}[[:alnum:]_]*)\\s+((\\p{Alpha}[[:alnum:]_]*)(?!\\s\\w)\\s*(?=[,\\s\\)]))"
                 },
                 {
                     "comment": "of-clause definition",
