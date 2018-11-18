@@ -50,9 +50,6 @@
             "path": "./syntaxes/ttcn.tmLanguage.json"
         }]
     },
-    "scripts": {
-        "compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
-    },
     "icon": "images/vscode-icon-ttcn.png",
     "__metadata": {
         "publisherDisplayName": "Emmanuel Alap"
