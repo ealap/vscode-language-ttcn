@@ -11,7 +11,7 @@ jobs:
   - task: Npm@1
     displayName: 'Install dependencies'
     inputs:
-      verbose: false
+      verbose: true
   - task: Npm@1
     displayName: 'Compile sources'
     inputs:

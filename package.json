@@ -13,6 +13,10 @@
     "engines": {
         "vscode": "^1.23.0"
     },
+    "devDependencies": {
+        "typescript": "^1.6.2",
+        "vscode": "0.10.x"
+    },
     "categories": [
         "Programming Languages"
     ],
@@ -51,7 +55,8 @@
         }]
     },
     "scripts": {
-        "compile": "node ./node_modules/vscode/bin/test"
+        "compile": "node ./node_modules/vscode/bin/test",
+        "postinstall": "node ./node_modules/vscode/bin/install"
     },
     "icon": "images/vscode-icon-ttcn.png",
     "__metadata": {
