@@ -6,14 +6,12 @@
         },
         {
             "include": "#statements"
+        },
+        {
+            "include": "#invalid"
         }
     ],
     "repository": {
-        "impossible": {
-            "patterns": [{
-                "match": "$.^"
-            }]
-        },
         "expressions": {
             "patterns": [{
                     "include": "#keywords"
@@ -366,12 +364,17 @@
                 {
                     "comment": "statement separator symbol [.;,]",
                     "name": "string.unquoted.separator.ttcn",
-                    "match": "[\\.;,]"
+                    "match": "(?<![\\.;,])([\\.;,])(?![\\.;,])"
                 },
                 {
                     "comment": "wildcard/matching symbol [?*]",
                     "name": "constant.other.wildcard.ttcn",
                     "match": "[\\?\\*]"
+                },
+                {
+                    "comment": "range symbol [..]",
+                    "name": "string.unquoted.separator.ttcn",
+                    "match": "\\.{2}"
                 },
                 {
                     "comment": "arithmetic operators [+-*/] (mod,rem)",
@@ -381,7 +384,7 @@
                 {
                     "comment": "string operators [&]",
                     "name": "keyword.operator.concatenation.ttcn",
-                    "match": "&"
+                    "match": "(?<![&])([&])(?![&])"
                 },
                 {
                     "comment": "relational operators (==, !=, <, <=, >, >=)",
@@ -430,6 +433,25 @@
                     "name": "comment.line.double-dash.ttcn",
                     "begin": "/\\*",
                     "end": "\\*/"
+                }
+            ]
+        },
+        "invalid": {
+            "patterns": [{
+                    "name": "invalid.illegal.identifier.ttcn",
+                    "match": "(?<=altstep|const|from|function|module|template|testcase|timer|var)\\s+([[:digit:]_][[:alnum:]_]+|\\p{Alpha}[[:alnum:]_]*[^[:alnum:]_;\\(]*[[:alnum:]_]*)(?=[;\\(\\s])"
+                },
+                {
+                    "name": "invalid.illegal.numstring.ttcn",
+                    "match": "'[[:^digit:][:alpha:]0-9\\\\\\s]*'(B|O|H)"
+                },
+                {
+                    "name": "invalid.illegal.symbol.ttcn",
+                    "match": "[\\;,&]{2,}"
+                },
+                {
+                    "name": "invalid.illegal.impossible.ttcn",
+                    "match": "$.^"
                 }
             ]
         }
