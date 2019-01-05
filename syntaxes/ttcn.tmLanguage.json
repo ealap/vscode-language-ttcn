@@ -6,14 +6,12 @@
         },
         {
             "include": "#statements"
+        },
+        {
+            "include": "#invalid"
         }
     ],
     "repository": {
-        "impossible": {
-            "patterns": [{
-                "match": "$.^"
-            }]
-        },
         "expressions": {
             "patterns": [{
                     "include": "#keywords"
@@ -229,17 +227,17 @@
             "patterns": [{
                     "comment": "type identifier",
                     "name": "keyword.other.type.ttcn",
-                    "match": "(?<=const|template|timer|var)\\s+(\\p{Alpha}[[:alnum:]_]*)\\s*(?=[\\[\\s;$])"
+                    "match": "(?<=const|template|timer|var)\\s+(\\p{Alpha}[[:alnum:]_]*)\\s*(?=[\\[\\s;])"
                 },
                 {
                     "comment": "function/testcase/altstep identifier",
                     "name": "entity.name.method.function.ttcn",
-                    "match": "(?<=function|testcase|altstep)\\s+(\\p{Alpha}[[:alnum:]_]*)(?=[;\\(\\s$])"
+                    "match": "(?<=function|testcase|altstep)\\s+(\\p{Alpha}[[:alnum:]_]*)(?=[;\\(\\s])"
                 },
                 {
                     "comment": "module identifier",
                     "name": "entity.name.function.module.ttcn",
-                    "match": "(?<=from|module)\\s+(\\p{Alpha}[[:alnum:]_]*)(?=[\\{\\s;$])"
+                    "match": "(?<=from|module)\\s+(\\p{Alpha}[[:alnum:]_]*)(?=[\\{\\s;])"
                 },
                 {
                     "comment": "module identifier list",
@@ -251,7 +249,7 @@
                             "name": "entity.name.function.module.ttcn"
                         }
                     },
-                    "match": "(?<=module)\\s+(\\p{Alpha}[[:alnum:]_]*)\\s*,\\s*(\\p{Alpha}[[:alnum:]_]*)(?=[\\{\\s;$])"
+                    "match": "(?<=module)\\s+(\\p{Alpha}[[:alnum:]_]*)\\s*,\\s*(\\p{Alpha}[[:alnum:]_]*)(?=[\\{\\s;])"
                 }
             ]
         },
@@ -278,7 +276,7 @@
                 },
                 {
                     "name": "keyword.other.class.dot.ttcn",
-                    "match": "(?<=[\\{\\(\\[\\]\\s;]|^)(?!infinity|not_a_number)(\\p{Alpha}[[:alnum:]_]*)(?=[\\.])"
+                    "match": "(?<=[\\{\\(\\[\\]\\s;,]|^)(?!infinity|not_a_number)(\\p{Alpha}[[:alnum:]_]*)(?=[\\.])"
                 },
                 {
                     "name": "entity.name.method.dot.ttcn",
@@ -307,18 +305,18 @@
                 },
                 {
                     "comment": "bitstring format",
-                    "name": "constant.numeric.hexadecimal.ttcn",
+                    "name": "constant.numeric.bitstring.ttcn",
                     "match": "'[0-1\\\\\\s]*'B"
                 },
                 {
                     "comment": "octetstring format",
-                    "name": "constant.numeric.hexadecimal.ttcn",
+                    "name": "constant.numeric.octetstring.ttcn",
                     "match": "'[^\\S]*([0-9A-f][^\\S]*[0-9A-f][^\\S]*)*'O"
                 },
                 {
                     "comment": "hexstring format",
-                    "name": "constant.numeric.hexadecimal.ttcn",
-                    "match": "'[0-9A-f\\\\\\s]*'H"
+                    "name": "constant.numeric.hexstring.ttcn",
+                    "match": "'[0-9A-Fa-f\\\\\\s]*'H"
                 },
                 {
                     "comment": "exponential format",
@@ -366,12 +364,17 @@
                 {
                     "comment": "statement separator symbol [.;,]",
                     "name": "string.unquoted.separator.ttcn",
-                    "match": "[\\.;,]"
+                    "match": "(?<![\\.;,])([\\.;,])(?![\\.;,])"
                 },
                 {
                     "comment": "wildcard/matching symbol [?*]",
                     "name": "constant.other.wildcard.ttcn",
                     "match": "[\\?\\*]"
+                },
+                {
+                    "comment": "range symbol [..]",
+                    "name": "string.unquoted.separator.ttcn",
+                    "match": "\\.{2}"
                 },
                 {
                     "comment": "arithmetic operators [+-*/] (mod,rem)",
@@ -381,7 +384,7 @@
                 {
                     "comment": "string operators [&]",
                     "name": "keyword.operator.concatenation.ttcn",
-                    "match": "&"
+                    "match": "(?<![&])([&])(?![&])"
                 },
                 {
                     "comment": "relational operators (==, !=, <, <=, >, >=)",
@@ -430,6 +433,25 @@
                     "name": "comment.line.double-dash.ttcn",
                     "begin": "/\\*",
                     "end": "\\*/"
+                }
+            ]
+        },
+        "invalid": {
+            "patterns": [{
+                    "name": "invalid.illegal.identifier.ttcn",
+                    "match": "(?<=altstep|const|from|function|module|template|testcase|timer|var)\\s+([[:digit:]_][[:alnum:]_]+|\\p{Alpha}[[:alnum:]_]*[^[:alnum:]_;\\(]*[[:alnum:]_]*)(?=[;\\(\\s])"
+                },
+                {
+                    "name": "invalid.illegal.numstring.ttcn",
+                    "match": "'[[:^digit:][:alpha:]0-9\\\\\\s]*'(B|O|H)"
+                },
+                {
+                    "name": "invalid.illegal.symbol.ttcn",
+                    "match": "[\\;,&]{2,}"
+                },
+                {
+                    "name": "invalid.illegal.impossible.ttcn",
+                    "match": "$.^"
                 }
             ]
         }

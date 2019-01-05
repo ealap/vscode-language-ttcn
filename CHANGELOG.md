@@ -1,6 +1,18 @@
 # vscode-language-ttcn
 ## TTCN-3 Language Support for Visual Studio Code
 ## Change Log
+#### 0.5.0
+- Added highlighting for invalid identifers
+- Added highlighting for invalid numeric strings
+- Added highlighting for invalid symbols
+- Added highlighting for range symbol
+- Modified pattern for matching statement separators
+- Modified pattern for matching string operator (&)
+- Replaced impossible match under invalid patterns
+- Removed end-of-line match when highlighting identifiers
+- Modified regular expression to only match hexadecimal digits A-F or a-f
+- Fixed incorrect name key for bitstring and octetstring
+
 #### 0.4.0
 - Added highlight for comma-separated identifiers used when defining multiple friend modules
 - Added highlight for arrays and their indices when followed by the assignment operator
