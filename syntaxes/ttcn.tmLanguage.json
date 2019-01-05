@@ -307,18 +307,18 @@
                 },
                 {
                     "comment": "bitstring format",
-                    "name": "constant.numeric.hexadecimal.ttcn",
+                    "name": "constant.numeric.bitstring.ttcn",
                     "match": "'[0-1\\\\\\s]*'B"
                 },
                 {
                     "comment": "octetstring format",
-                    "name": "constant.numeric.hexadecimal.ttcn",
+                    "name": "constant.numeric.octetstring.ttcn",
                     "match": "'[^\\S]*([0-9A-f][^\\S]*[0-9A-f][^\\S]*)*'O"
                 },
                 {
                     "comment": "hexstring format",
-                    "name": "constant.numeric.hexadecimal.ttcn",
-                    "match": "'[0-9A-f\\\\\\s]*'H"
+                    "name": "constant.numeric.hexstring.ttcn",
+                    "match": "'[0-9A-Fa-f\\\\\\s]*'H"
                 },
                 {
                     "comment": "exponential format",
