@@ -11,17 +11,9 @@ Provides TTCN-3 language support for Visual Studio Code
 - Syntax highlighting<br /><p><img src="https://raw.githubusercontent.com/ealap/vscode-language-ttcn/dev-ealap/images/vscode-ss-ttcn3.png" alt="Figure 001. TTCN-3 Sample Code" /></p><sup><i>Theme: <a href="https://marketplace.visualstudio.com/items?itemName=teabyii.ayu">Ayu Dark by teabyii</a></i></sup>
 
 ### Release Notes
-#### 0.5.0
-- Added highlighting for invalid identifers
-- Added highlighting for invalid numeric strings
-- Added highlighting for invalid symbols
-- Added highlighting for range symbol
-- Modified pattern for matching statement separators
-- Modified pattern for matching string operator (&)
-- Replaced impossible match under invalid patterns
-- Removed end-of-line match when highlighting identifiers
-- Modified regular expression to only match hexadecimal digits A-F or a-f
-- Fixed incorrect name key for bitstring and octetstring
+#### 0.6.0
+- Added a separate rule for invalid identifiers for const/template/var
+- Added support for highlighting colon (:) (undocumented in TTCN-3)
 
 #### Older releases
 See [CHANGELOG](https://raw.githubusercontent.com/ealap/vscode-language-ttcn/master/CHANGELOG.md)
