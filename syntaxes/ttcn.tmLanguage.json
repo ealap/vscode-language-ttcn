@@ -364,7 +364,7 @@
                 {
                     "comment": "statement separator symbol [.;,]",
                     "name": "string.unquoted.separator.ttcn",
-                    "match": "(?<![\\.;,])([\\.;,])(?![\\.;,])"
+                    "match": "(?<![\\.\\:\\;\\,])([\\.\\:\\;\\,])(?![\\.\\:\\;\\,])"
                 },
                 {
                     "comment": "wildcard/matching symbol [?*]",
@@ -439,7 +439,11 @@
         "invalid": {
             "patterns": [{
                     "name": "invalid.illegal.identifier.ttcn",
-                    "match": "(?<=altstep|const|from|function|module|template|testcase|timer|var)\\s+([[:digit:]_][[:alnum:]_]+|\\p{Alpha}[[:alnum:]_]*[^[:alnum:]_;\\(]*[[:alnum:]_]*)(?=[;\\(\\s])"
+                    "match": "(?<=altstep|function|module|testcase)\\s+([[:digit:]_][[:alnum:]_]+|\\p{Alpha}[[:alnum:]_]*[^[:alnum:]_;\\(]*[[:alnum:]_]*)(?=[;\\(\\s])"
+                },
+                {
+                    "name": "invalid.illegal.identifier.ttcn",
+                    "match": "(?<=const|from|template|var)\\s+([[:digit:]_][[:alnum:]_]+|\\p{Alpha}[[:alnum:]_]*[^[:alnum:]_;\\:\\(\\.]*[[:alnum:]_]*)(?=[\\s])"
                 },
                 {
                     "name": "invalid.illegal.numstring.ttcn",
@@ -447,7 +451,7 @@
                 },
                 {
                     "name": "invalid.illegal.symbol.ttcn",
-                    "match": "[\\;,&]{2,}"
+                    "match": "[\\;\\:\\,\\&]{2,}"
                 },
                 {
                     "name": "invalid.illegal.impossible.ttcn",
