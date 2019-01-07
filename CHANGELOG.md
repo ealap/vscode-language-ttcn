@@ -1,6 +1,10 @@
 # vscode-language-ttcn
 ## TTCN-3 Language Support for Visual Studio Code
 ## Change Log
+#### 0.6.0
+- Added a separate rule for invalid identifiers for const/template/var
+- Added support for highlighting colon (:) (undocumented in TTCN-3)
+
 #### 0.5.0
 - Added highlighting for invalid identifers
 - Added highlighting for invalid numeric strings
