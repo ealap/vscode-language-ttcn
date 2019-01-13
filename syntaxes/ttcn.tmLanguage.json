@@ -238,12 +238,12 @@
                 {
                     "comment": "function/testcase/altstep identifier",
                     "name": "entity.name.method.function.ttcn",
-                    "match": "(?<=function|testcase|altstep)\\s+([[:alpha:]][[:word:]]*)(?=[;\\(\\s])"
+                    "match": "(?<=function|testcase|altstep)\\s+([[:alpha:]][[:word:]]*)(?=[;\\([:space:]])"
                 },
                 {
                     "comment": "module identifier",
                     "name": "entity.name.function.module.ttcn",
-                    "match": "(?<=from|module)\\s+([[:alpha:]][[:word:]]*)(?=[\\{\\s;])"
+                    "match": "(?<=from|module)\\s+([[:alpha:]][[:word:]]*)(?=[\\{[:space:];])"
                 },
                 {
                     "comment": "module identifier list",
@@ -255,7 +255,7 @@
                             "name": "entity.name.function.module.ttcn"
                         }
                     },
-                    "match": "(?<=module)\\s+([[:alpha:]][[:word:]]*)\\s*,\\s*([[:alpha:]][[:word:]]*)(?=[\\{\\s;])"
+                    "match": "(?<=module)\\s+([[:alpha:]][[:word:]]*)\\s*,\\s*([[:alpha:]][[:word:]]*)(?=[\\{[:space:];])"
                 }
             ]
         },
@@ -267,7 +267,7 @@
                 },
                 {
                     "name": "variable.parameter.assignment.square.ttcn",
-                    "match": "(?<!\\.)([[:alpha:]][[:word:]]*)\\s*(?=(\\[[\\s\\S]*\\]\\s*:\\=))"
+                    "match": "(?<!\\.)([[:alpha:]][[:word:]]*)\\s*(?=(\\[[[:space:]\\S]*\\]\\s*:\\=))"
                 },
                 {
                     "name": "keyword.other.square.ttcn",
@@ -275,15 +275,15 @@
                 },
                 {
                     "name": "constant.numeric.method.square.ttcn",
-                    "match": "(?<=[\\[])\\s*([[:alpha:]][[:word:]\\-\\+\\s]*)\\s*(?=[\\]])"
+                    "match": "(?<=[\\[])\\s*([[:alpha:]][[:word:]\\-\\+[:space:]]*)\\s*(?=[\\]])"
                 },
                 {
                     "name": "keyword.other.class.square.dot.ttcn",
-                    "match": "(?<=[\\{\\(\\[\\]\\s;]|^)([[:alpha:]][[:word:]]*)(?=\\[\\S+\\][\\.])"
+                    "match": "(?<=[\\{\\(\\[\\][:space:];]|^)([[:alpha:]][[:word:]]*)(?=\\[\\S+\\][\\.])"
                 },
                 {
                     "name": "keyword.other.class.dot.ttcn",
-                    "match": "(?<=[\\{\\(\\[\\]\\s;,]|^)(?!infinity|not_a_number)([[:alpha:]][[:word:]]*)(?=[\\.])"
+                    "match": "(?<=[\\{\\(\\[\\][:space:];,]|^)(?!infinity|not_a_number)([[:alpha:]][[:word:]]*)(?=[\\.])"
                 },
                 {
                     "name": "entity.name.method.dot.ttcn",
@@ -291,7 +291,7 @@
                 },
                 {
                     "name": "entity.name.method.round.ttcn",
-                    "match": "(?<=[\\{\\(\\[\\s\\.])([[:alpha:]][[:word:]]*)\\s*(?=[\\(])"
+                    "match": "(?<=[\\{\\(\\[[:space:]\\.])([[:alpha:]][[:word:]]*)\\s*(?=[\\(])"
                 },
                 {
                     "comment": "user-defined type",
@@ -300,7 +300,7 @@
                             "name": "keyword.other.type.ttcn"
                         }
                     },
-                    "match": "(?<!\\.)(?<=[,\\s\\(\\{]|^)\\s*((?!type|module|var|timer|signature|template|function|altstep|testcase)([[:alpha:]][[:word:]]*)(?=[\\s]))\\s+((?!optional)([[:alpha:]][[:word:]]*)\\s*(?=[:;,\\[\\)\\}\\r\\n]))"
+                    "match": "(?<!\\.)(?<=[,[:space:]\\(\\{]|^)\\s*((?!type|module|var|timer|signature|template|function|altstep|testcase)([[:alpha:]][[:word:]]*)(?=[[:space:]]))\\s+((?!optional)([[:alpha:]][[:word:]]*)\\s*(?=[:;,\\[\\)\\}\\r\\n]))"
                 }
             ]
         },
@@ -314,7 +314,7 @@
                 {
                     "comment": "bitstring format",
                     "name": "constant.numeric.bitstring.ttcn",
-                    "match": "'[0-1\\\\\\s]*'B"
+                    "match": "'[0-1\\\\[:space:]]*'B"
                 },
                 {
                     "comment": "octetstring format",
@@ -324,7 +324,7 @@
                 {
                     "comment": "hexstring format",
                     "name": "constant.numeric.hexstring.ttcn",
-                    "match": "'[[:xdigit:]\\\\\\s]*'H"
+                    "match": "'[[:xdigit:]\\\\[:space:]]*'H"
                 },
                 {
                     "comment": "exponential format",
@@ -452,15 +452,19 @@
             "patterns": [
                 {
                     "name": "invalid.illegal.identifier.ttcn",
-                    "match": "(?<=altstep|function|module|testcase)\\s+([[:digit:]_][[:word:]]+|[[:alpha:]][[:word:]]*[^[:word:];\\(]*[[:word:]]*)(?=[;\\(\\s])"
+                    "match": "(?<=altstep|function|module|testcase)\\s+([[:digit:]_][[:word:]]+|)(?=[[:space:];\\(\\)\\{\\}\\[\\]])"
                 },
                 {
                     "name": "invalid.illegal.identifier.ttcn",
-                    "match": "(?<=const|from|template|var)\\s+([[:digit:]_][[:word:]]+|[[:alpha:]][[:word:]]*[^[:word:];\\:\\(\\.]*[[:word:]]*)(?=[\\s])"
+                    "match": "(?<=altstep|function|module|testcase)\\s+([[:digit:]_][[:word:]]+|[[:word:]]*[^[:word:][:space:]\\;\\(\\)\\{\\}\\[\\]][[:word:]]*|\\S*[^[:word:][:space:]\\;\\(\\)\\{\\}\\[\\]][[:word:]]*)(?=[[:space:];\\(\\)\\{\\}\\[\\]])"
+                },
+                {
+                    "name": "invalid.illegal.identifier.ttcn",
+                    "match": "(?<=const|from|on|template|var)\\s+([[:digit:]_][[:word:]]+|[[:word:]]*[^[:word:][:space:]\\.\\;\\(\\)\\{\\}\\[\\]][[:word:]]*|\\S*[^[:word:][:space:]\\.\\;\\(\\)\\{\\}\\[\\]][[:word:]]*|[[:word:]]*[^[:word:][:space:]\\.\\;\\(\\)\\{\\}\\[\\]]\\S*)(?=[[:space:]\\.\\;\\(\\)\\{\\}\\[\\]])"
                 },
                 {
                     "name": "invalid.illegal.numstring.ttcn",
-                    "match": "'[[:^digit:][:alpha:]0-9\\\\\\s]*'(B|O|H)"
+                    "match": "'[[:^digit:][:alpha:]0-9\\\\[:space:]]*'(B|O|H)"
                 },
                 {
                     "name": "invalid.illegal.symbol.ttcn",
