@@ -44,7 +44,8 @@
             ],
             "extensions": [
                 ".ttcn3",
-                ".ttcn"
+                ".ttcn",
+                ".ttcnpp"
             ],
             "configuration": "./language-configuration.json"
         }],
