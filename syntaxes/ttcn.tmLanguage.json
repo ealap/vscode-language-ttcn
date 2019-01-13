@@ -300,7 +300,7 @@
                             "name": "keyword.other.type.ttcn"
                         }
                     },
-                    "match": "(?<!\\.)(?<=[,\\s\\(\\{]|^)\\s*((?!type|module|var|timer|signature|template|function|altstep|testcase)([[:alpha:]][[:word:]]*)(?=[\\s]))\\s+((?!optional)([[:alpha:]][[:word:]]*)\\s*(?=[;,\\[\\)\\}\\r\\n]))"
+                    "match": "(?<!\\.)(?<=[,\\s\\(\\{]|^)\\s*((?!type|module|var|timer|signature|template|function|altstep|testcase)([[:alpha:]][[:word:]]*)(?=[\\s]))\\s+((?!optional)([[:alpha:]][[:word:]]*)\\s*(?=[:;,\\[\\)\\}\\r\\n]))"
                 }
             ]
         },
