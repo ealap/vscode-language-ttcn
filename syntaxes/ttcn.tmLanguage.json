@@ -233,17 +233,17 @@
                 {
                     "comment": "type identifier",
                     "name": "keyword.other.type.ttcn",
-                    "match": "(?<=const|template|timer|var)\\s+(\\p{Alpha}[[:alnum:]_]*)\\s*(?=[\\[\\s;])"
+                    "match": "(?<=const|template|timer|var)\\s+([[:alpha:]][[:word:]]*)\\s*(?=[[:space:]\\[\\;])"
                 },
                 {
                     "comment": "function/testcase/altstep identifier",
                     "name": "entity.name.method.function.ttcn",
-                    "match": "(?<=function|testcase|altstep)\\s+(\\p{Alpha}[[:alnum:]_]*)(?=[;\\(\\s])"
+                    "match": "(?<=function|testcase|altstep)\\s+([[:alpha:]][[:word:]]*)(?=[;\\(\\s])"
                 },
                 {
                     "comment": "module identifier",
                     "name": "entity.name.function.module.ttcn",
-                    "match": "(?<=from|module)\\s+(\\p{Alpha}[[:alnum:]_]*)(?=[\\{\\s;])"
+                    "match": "(?<=from|module)\\s+([[:alpha:]][[:word:]]*)(?=[\\{\\s;])"
                 },
                 {
                     "comment": "module identifier list",
@@ -255,7 +255,7 @@
                             "name": "entity.name.function.module.ttcn"
                         }
                     },
-                    "match": "(?<=module)\\s+(\\p{Alpha}[[:alnum:]_]*)\\s*,\\s*(\\p{Alpha}[[:alnum:]_]*)(?=[\\{\\s;])"
+                    "match": "(?<=module)\\s+([[:alpha:]][[:word:]]*)\\s*,\\s*([[:alpha:]][[:word:]]*)(?=[\\{\\s;])"
                 }
             ]
         },
@@ -263,35 +263,35 @@
             "patterns": [
                 {
                     "name": "variable.parameter.assignment.ttcn",
-                    "match": "(?<!\\.)(\\p{Alpha}[[:alnum:]_]*)\\s*(?=(:\\=))"
+                    "match": "(?<!\\.)([[:alpha:]][[:word:]]*)\\s*(?=(:\\=))"
                 },
                 {
                     "name": "variable.parameter.assignment.square.ttcn",
-                    "match": "(?<!\\.)(\\p{Alpha}[[:alnum:]_]*)\\s*(?=(\\[[\\s\\S]*\\]\\s*:\\=))"
+                    "match": "(?<!\\.)([[:alpha:]][[:word:]]*)\\s*(?=(\\[[\\s\\S]*\\]\\s*:\\=))"
                 },
                 {
                     "name": "keyword.other.square.ttcn",
-                    "match": "(?<!\\.)(\\p{Alpha}[[:alnum:]_]*)\\s*(?=\\[)"
+                    "match": "(?<!\\.)([[:alpha:]][[:word:]]*)\\s*(?=\\[)"
                 },
                 {
                     "name": "constant.numeric.method.square.ttcn",
-                    "match": "(?<=[\\[])\\s*(\\p{Alpha}[[:alnum:]_\\-\\+\\s]*)\\s*(?=[\\]])"
+                    "match": "(?<=[\\[])\\s*([[:alpha:]][[:word:]\\-\\+\\s]*)\\s*(?=[\\]])"
                 },
                 {
                     "name": "keyword.other.class.square.dot.ttcn",
-                    "match": "(?<=[\\{\\(\\[\\]\\s;]|^)(\\p{Alpha}[[:alnum:]_]*)(?=\\[\\S+\\][\\.])"
+                    "match": "(?<=[\\{\\(\\[\\]\\s;]|^)([[:alpha:]][[:word:]]*)(?=\\[\\S+\\][\\.])"
                 },
                 {
                     "name": "keyword.other.class.dot.ttcn",
-                    "match": "(?<=[\\{\\(\\[\\]\\s;,]|^)(?!infinity|not_a_number)(\\p{Alpha}[[:alnum:]_]*)(?=[\\.])"
+                    "match": "(?<=[\\{\\(\\[\\]\\s;,]|^)(?!infinity|not_a_number)([[:alpha:]][[:word:]]*)(?=[\\.])"
                 },
                 {
                     "name": "entity.name.method.dot.ttcn",
-                    "match": "(?<=[\\.])(?!infinity|not_a_number)(\\p{Alpha}[[:alnum:]_]*)"
+                    "match": "(?<=[\\.])(?!infinity|not_a_number)([[:alpha:]][[:word:]]*)"
                 },
                 {
                     "name": "entity.name.method.round.ttcn",
-                    "match": "(?<=[\\{\\(\\[\\s\\.])(\\p{Alpha}[[:alnum:]_]*)\\s*(?=[\\(])"
+                    "match": "(?<=[\\{\\(\\[\\s\\.])([[:alpha:]][[:word:]]*)\\s*(?=[\\(])"
                 },
                 {
                     "comment": "user-defined type",
@@ -300,7 +300,7 @@
                             "name": "keyword.other.type.ttcn"
                         }
                     },
-                    "match": "(?<!\\.)(?<=[,\\s\\(\\{]|^)\\s*((?!type|module|var|timer|signature|template|function|altstep|testcase)(\\p{Alpha}[[:alnum:]_]*)(?=[\\s]))\\s+((?!optional)(\\p{Alpha}[[:alnum:]_]*)\\s*(?=[;,\\[\\)\\}\\r\\n]))"
+                    "match": "(?<!\\.)(?<=[,\\s\\(\\{]|^)\\s*((?!type|module|var|timer|signature|template|function|altstep|testcase)([[:alpha:]][[:word:]]*)(?=[\\s]))\\s+((?!optional)([[:alpha:]][[:word:]]*)\\s*(?=[;,\\[\\)\\}\\r\\n]))"
                 }
             ]
         },
@@ -319,12 +319,12 @@
                 {
                     "comment": "octetstring format",
                     "name": "constant.numeric.octetstring.ttcn",
-                    "match": "'[^\\S]*([0-9A-f][^\\S]*[0-9A-f][^\\S]*)*'O"
+                    "match": "'[^\\S]*([[:xdigit:]][^\\S]*[[:xdigit:]][^\\S]*)*'O"
                 },
                 {
                     "comment": "hexstring format",
                     "name": "constant.numeric.hexstring.ttcn",
-                    "match": "'[0-9A-Fa-f\\\\\\s]*'H"
+                    "match": "'[[:xdigit:]\\\\\\s]*'H"
                 },
                 {
                     "comment": "exponential format",
@@ -452,11 +452,11 @@
             "patterns": [
                 {
                     "name": "invalid.illegal.identifier.ttcn",
-                    "match": "(?<=altstep|function|module|testcase)\\s+([[:digit:]_][[:alnum:]_]+|\\p{Alpha}[[:alnum:]_]*[^[:alnum:]_;\\(]*[[:alnum:]_]*)(?=[;\\(\\s])"
+                    "match": "(?<=altstep|function|module|testcase)\\s+([[:digit:]_][[:word:]]+|[[:alpha:]][[:word:]]*[^[:word:];\\(]*[[:word:]]*)(?=[;\\(\\s])"
                 },
                 {
                     "name": "invalid.illegal.identifier.ttcn",
-                    "match": "(?<=const|from|template|var)\\s+([[:digit:]_][[:alnum:]_]+|\\p{Alpha}[[:alnum:]_]*[^[:alnum:]_;\\:\\(\\.]*[[:alnum:]_]*)(?=[\\s])"
+                    "match": "(?<=const|from|template|var)\\s+([[:digit:]_][[:word:]]+|[[:alpha:]][[:word:]]*[^[:word:];\\:\\(\\.]*[[:word:]]*)(?=[\\s])"
                 },
                 {
                     "name": "invalid.illegal.numstring.ttcn",
