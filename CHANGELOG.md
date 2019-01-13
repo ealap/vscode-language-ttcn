@@ -1,6 +1,11 @@
 # vscode-language-ttcn
 ## TTCN-3 Language Support for Visual Studio Code
 ## Change Log
+- Added support for pre-processed TTCN files (.ttcnpp) \[[@oakimk](https://github.com/oakimk) in [#17](https://github.com/ealap/vscode-language-ttcn/pull/17)\]
+- Fixed issue with invalid identifiers with multiple special characters
+- Fixed issue regarding user-defined types with assigned values
+- Modified for a more consistent and optimal usage of regular expressions
+
 #### 0.6.0
 - Added a separate rule for invalid identifiers for const/template/var
 - Added support for highlighting colon (:) (undocumented in TTCN-3)

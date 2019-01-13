@@ -2,7 +2,7 @@
     "name": "language-ttcn",
     "displayName": "TTCN-3 Language Support for Visual Studio Code",
     "description": "Provides TTCN-3 language support for Visual Studio Code",
-    "version": "0.6.0",
+    "version": "0.7.0",
     "publisher": "ealap",
     "license": "MIT",
     "preview": true,
@@ -32,28 +32,32 @@
         "syntax"
     ],
     "contributes": {
-        "languages": [{
-            "id": "ttcn",
-            "aliases": [
-                "TTCN-3",
-                "ttcn-3",
-                "TTCN3",
-                "ttcn3",
-                "TTCN",
-                "ttcn"
-            ],
-            "extensions": [
-                ".ttcn3",
-                ".ttcn",
-                ".ttcnpp"
-            ],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "ttcn",
-            "scopeName": "source.ttcn",
-            "path": "./syntaxes/ttcn.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "ttcn",
+                "aliases": [
+                    "TTCN-3",
+                    "ttcn-3",
+                    "TTCN3",
+                    "ttcn3",
+                    "TTCN",
+                    "ttcn"
+                ],
+                "extensions": [
+                    ".ttcn3",
+                    ".ttcn",
+                    ".ttcnpp"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "ttcn",
+                "scopeName": "source.ttcn",
+                "path": "./syntaxes/ttcn.tmLanguage.json"
+            }
+        ]
     },
     "icon": "images/vscode-icon-ttcn.png",
     "__metadata": {
