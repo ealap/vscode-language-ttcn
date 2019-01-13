@@ -1,7 +1,8 @@
 {
     "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
     "name": "TTCN-3",
-    "patterns": [{
+    "patterns": [
+        {
             "include": "#expressions"
         },
         {
@@ -13,7 +14,8 @@
     ],
     "repository": {
         "expressions": {
-            "patterns": [{
+            "patterns": [
+                {
                     "include": "#keywords"
                 },
                 {
@@ -34,7 +36,8 @@
             ]
         },
         "statements": {
-            "patterns": [{
+            "patterns": [
+                {
                     "include": "#strings"
                 },
                 {
@@ -43,7 +46,8 @@
             ]
         },
         "keywords": {
-            "patterns": [{
+            "patterns": [
+                {
                     "comment": "structural keywords",
                     "name": "support.function.module.ttcn",
                     "match": "(?x) \\b(type|module|var|timer|signature|template|function|altstep|testcase)\\b"
@@ -141,7 +145,8 @@
             ]
         },
         "functions": {
-            "patterns": [{
+            "patterns": [
+                {
                     "name": "entity.name.method.ttcn",
                     "match": "(?x) \\b(action|activate|alive|any2unistr)\\b"
                 },
@@ -224,7 +229,8 @@
             ]
         },
         "identifiers": {
-            "patterns": [{
+            "patterns": [
+                {
                     "comment": "type identifier",
                     "name": "keyword.other.type.ttcn",
                     "match": "(?<=const|template|timer|var)\\s+(\\p{Alpha}[[:alnum:]_]*)\\s*(?=[\\[\\s;])"
@@ -254,7 +260,8 @@
             ]
         },
         "notations": {
-            "patterns": [{
+            "patterns": [
+                {
                     "name": "variable.parameter.assignment.ttcn",
                     "match": "(?<!\\.)(\\p{Alpha}[[:alnum:]_]*)\\s*(?=(:\\=))"
                 },
@@ -298,7 +305,8 @@
             ]
         },
         "numbers": {
-            "patterns": [{
+            "patterns": [
+                {
                     "comment": "integer/float/decimal format",
                     "name": "constant.numeric.digits.ttcn",
                     "match": "(-?)\\b([0-9]+)\\b"
@@ -346,7 +354,8 @@
             ]
         },
         "symbols": {
-            "patterns": [{
+            "patterns": [
+                {
                     "comment": "assignment operator symbol [:=]",
                     "name": "keyword.operator.new.assignment.ttcn",
                     "match": ":\\="
@@ -417,13 +426,16 @@
             "name": "string.quoted.double.ttcn",
             "begin": "\"",
             "end": "\"",
-            "patterns": [{
-                "name": "constant.character.escape.ttcn",
-                "match": "\\\\."
-            }]
+            "patterns": [
+                {
+                    "name": "constant.character.escape.ttcn",
+                    "match": "\\\\."
+                }
+            ]
         },
         "comments": {
-            "patterns": [{
+            "patterns": [
+                {
                     "comment": "line comment",
                     "name": "comment.block.documentation.ttcn",
                     "match": "//.*"
@@ -437,7 +449,8 @@
             ]
         },
         "invalid": {
-            "patterns": [{
+            "patterns": [
+                {
                     "name": "invalid.illegal.identifier.ttcn",
                     "match": "(?<=altstep|function|module|testcase)\\s+([[:digit:]_][[:alnum:]_]+|\\p{Alpha}[[:alnum:]_]*[^[:alnum:]_;\\(]*[[:alnum:]_]*)(?=[;\\(\\s])"
                 },
