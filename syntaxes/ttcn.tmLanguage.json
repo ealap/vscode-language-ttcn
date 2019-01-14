@@ -233,17 +233,17 @@
                 {
                     "comment": "type identifier",
                     "name": "keyword.other.type.ttcn",
-                    "match": "(?<=const|template|timer|type|var)\\s+([[:alpha:]][[:word:]]*)\\s*(?=[[:space:]\\[\\;])"
+                    "match": "(?<=\\sconst|\\stemplate|\\stimer|\\stype|\\svar)\\s+([[:alpha:]][[:word:]]*)\\s*(?=[[:space:]\\[\\;])"
                 },
                 {
                     "comment": "function/testcase/altstep identifier",
                     "name": "entity.name.method.function.ttcn",
-                    "match": "(?<=function|testcase|altstep)\\s+([[:alpha:]][[:word:]]*)(?=[;\\([:space:]])"
+                    "match": "(?<=\\sfunction|\\stestcase|\\saltstep)\\s+([[:alpha:]][[:word:]]*)(?=[;\\([:space:]])"
                 },
                 {
                     "comment": "module identifier",
                     "name": "entity.name.function.module.ttcn",
-                    "match": "(?<=from|module)\\s+([[:alpha:]][[:word:]]*)(?=[\\{[:space:];])"
+                    "match": "(?<=\\sfrom|\\smodule)\\s+([[:alpha:]][[:word:]]*)(?=[\\{[:space:];])"
                 },
                 {
                     "comment": "module identifier list",
@@ -255,12 +255,12 @@
                             "name": "entity.name.function.module.ttcn"
                         }
                     },
-                    "match": "(?<=module)\\s+([[:alpha:]][[:word:]]*)\\s*,\\s*([[:alpha:]][[:word:]]*)(?=[\\{[:space:];])"
+                    "match": "(?<=\\smodule)\\s+([[:alpha:]][[:word:]]*)\\s*,\\s*([[:alpha:]][[:word:]]*)(?=[\\{[:space:];])"
                 },
                 {
                     "comment": "user-defined type definition",
                     "name": "entity.name.type.ttcn",
-                    "match": "(?<=[[:space:]])([[:alpha:]][[:word:]]*)\\s+(?=with)"
+                    "match": "(?<=[[:space:]])([[:alpha:]][[:word:]]*)\\s+(?=with\\s)"
 
                 },
                 {
@@ -270,7 +270,7 @@
                             "name": "keyword.other.type.ttcn"
                         }
                     },
-                    "match": "(?<!\\.)(?<=[,[:space:]\\(\\{]|^)\\s*((?!type|module|var|timer|signature|template|function|altstep|testcase)([[:alpha:]][[:word:]]*)(?=[[:space:]]))\\s+((?!optional)([[:alpha:]][[:word:]]*)\\s*(?=[:;,\\[\\)\\}\\r\\n]))"
+                    "match": "(?<!\\.)(?<=[,[:space:]\\(\\{]|^)\\s*((?!\\stype|\\smodule|\\svar|\\stimer|\\ssignature|\\stemplate|\\sfunction|\\saltstep|\\stestcase)([[:alpha:]][[:word:]]*)(?=[[:space:]]))\\s+((?!optional\\s)([[:alpha:]][[:word:]]*)\\s*(?=[:;,\\[\\)\\}\\r\\n]))"
                 }
             ]
         },
@@ -458,15 +458,31 @@
             "patterns": [
                 {
                     "name": "invalid.illegal.identifier.ttcn",
-                    "match": "(?<=altstep|function|module|testcase)\\s+([[:digit:]_][[:word:]]+|)(?=[[:space:];\\(\\)\\{\\}\\[\\]])"
+                    "match": "(?<=\\saltstep|\\sfunction|\\smodule|\\stestcase)\\s+([[:digit:]_][[:word:]]+|)(?=[[:space:];\\(\\)\\{\\}\\[\\]])"
                 },
                 {
                     "name": "invalid.illegal.identifier.ttcn",
-                    "match": "(?<=altstep|function|module|testcase)\\s+([[:digit:]_][[:word:]]+|[[:word:]]*[^[:word:][:space:]\\;\\(\\)\\{\\}\\[\\]][[:word:]]*|\\S*[^[:word:][:space:]\\;\\(\\)\\{\\}\\[\\]][[:word:]]*)(?=[[:space:];\\(\\)\\{\\}\\[\\]])"
+                    "match": "(?<=\\saltstep|\\sfunction|\\smodule|\\stestcase)\\s+([[:digit:]_][[:word:]]+|[[:word:]]*[^[:word:][:space:]\\;\\(\\)\\{\\}\\[\\]][[:word:]]*)(?=[[:space:];\\(\\)\\{\\}\\[\\]])"
                 },
                 {
                     "name": "invalid.illegal.identifier.ttcn",
-                    "match": "(?<=const|from|on|template|var)\\s+([[:digit:]_][[:word:]]+|[[:word:]]*[^[:word:][:space:]\\.\\;\\(\\)\\{\\}\\[\\]][[:word:]]*|\\S*[^[:word:][:space:]\\.\\;\\(\\)\\{\\}\\[\\]][[:word:]]*|[[:word:]]*[^[:word:][:space:]\\.\\;\\(\\)\\{\\}\\[\\]]\\S*)(?=[[:space:]\\.\\;\\(\\)\\{\\}\\[\\]])"
+                    "match": "(?<=\\saltstep|\\sfunction|\\smodule|\\stestcase)\\s+(\\S*[^[:word:][:space:]\\;\\(\\)\\{\\}\\[\\]][[:word:]]*)(?=[[:space:];\\(\\)\\{\\}\\[\\]])"
+                },
+                {
+                    "name": "invalid.illegal.identifier.ttcn",
+                    "match": "(?<=\\son|\\sconst|\\sfrom|\\ssystem|\\stemplate|\\svar)\\s+([[:digit:]_][[:word:]]+)(?=[[:space:]\\.\\;\\(\\)\\{\\}\\[\\]])"
+                },
+                {
+                    "name": "invalid.illegal.identifier.ttcn",
+                    "match": "(?<=\\son|\\sconst|\\sfrom|\\ssystem|\\stemplate|\\svar)\\s+([[:word:]]*[^[:word:][:space:]\\.\\;\\(\\)\\{\\}\\[\\]][[:word:]]*)(?=[[:space:]\\.\\;\\(\\)\\{\\}\\[\\]])"
+                },
+                {
+                    "name": "invalid.illegal.identifier.ttcn",
+                    "match": "(?<=\\son|\\sconst|\\sfrom|\\ssystem|\\stemplate|\\svar)\\s+(\\S*[^[:word:][:space:]\\.\\;\\(\\)\\{\\}\\[\\]][[:word:]]*)(?=[[:space:]\\.\\;\\(\\)\\{\\}\\[\\]])"
+                },
+                {
+                    "name": "invalid.illegal.identifier.ttcn",
+                    "match": "(?<=\\son|\\sconst|\\sfrom|\\ssystem|\\stemplate|\\svar)\\s+([[:word:]]*[^[:word:][:space:]\\.\\;\\(\\)\\{\\}\\[\\]]\\S*)(?=[[:space:]\\.\\;\\(\\)\\{\\}\\[\\]])"
                 },
                 {
                     "name": "invalid.illegal.numstring.ttcn",
