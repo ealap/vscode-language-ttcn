@@ -8,14 +8,12 @@
 Provides TTCN-3 language support for Visual Studio Code
 
 ### Features
-- Syntax highlighting<br /><p><img src="https://raw.githubusercontent.com/ealap/vscode-language-ttcn/master/images/vscode-ss-ttcn3.png" alt="Figure 001. TTCN-3 Sample Code" style="max-width: 55%; height: auto; overflow: hidden;"/></p>
+- Syntax highlighting<br /><p><img src="https://raw.githubusercontent.com/ealap/vscode-language-ttcn/master/images/vscode-ss-ttcn3.png" alt="Figure 001. TTCN-3 Sample Code" style="max-width: 40%; height: auto; overflow: hidden;"/></p>
 
 ### Release Notes
-#### 0.7.0
-- Added support for pre-processed TTCN files (.ttcnpp) \[[@oakimk](https://github.com/oakimk) in [#17](https://github.com/ealap/vscode-language-ttcn/pull/17)\]
-- Fixed issue with invalid identifiers with multiple special characters
-- Fixed issue regarding user-defined types with assigned values
-- Modified for a more consistent and optimal usage of regular expressions
+#### 0.8.0
+- Fixed issue with highlighting identifiers paired with built-in keywords
+- Fixed missing highlight when defining user-defined types
 
 #### Older releases
 See [CHANGELOG](https://raw.githubusercontent.com/ealap/vscode-language-ttcn/master/CHANGELOG.md)

@@ -1,6 +1,12 @@
 # vscode-language-ttcn
 ## TTCN-3 Language Support for Visual Studio Code
 ## Change Log
+
+#### 0.8.0
+- Fixed issue with highlighting identifiers paired with built-in keywords
+- Fixed missing highlight when defining user-defined types
+
+#### 0.7.0
 - Added support for pre-processed TTCN files (.ttcnpp) \[[@oakimk](https://github.com/oakimk) in [#17](https://github.com/ealap/vscode-language-ttcn/pull/17)\]
 - Fixed issue with invalid identifiers with multiple special characters
 - Fixed issue regarding user-defined types with assigned values
