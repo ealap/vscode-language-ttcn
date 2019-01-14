@@ -233,7 +233,7 @@
                 {
                     "comment": "type identifier",
                     "name": "keyword.other.type.ttcn",
-                    "match": "(?<=const|template|timer|var)\\s+([[:alpha:]][[:word:]]*)\\s*(?=[[:space:]\\[\\;])"
+                    "match": "(?<=const|template|timer|type|var)\\s+([[:alpha:]][[:word:]]*)\\s*(?=[[:space:]\\[\\;])"
                 },
                 {
                     "comment": "function/testcase/altstep identifier",
@@ -256,6 +256,21 @@
                         }
                     },
                     "match": "(?<=module)\\s+([[:alpha:]][[:word:]]*)\\s*,\\s*([[:alpha:]][[:word:]]*)(?=[\\{[:space:];])"
+                },
+                {
+                    "comment": "user-defined type definition",
+                    "name": "entity.name.type.ttcn",
+                    "match": "(?<=[[:space:]])([[:alpha:]][[:word:]]*)\\s+(?=with)"
+
+                },
+                {
+                    "comment": "user-defined type enumeration",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.other.type.ttcn"
+                        }
+                    },
+                    "match": "(?<!\\.)(?<=[,[:space:]\\(\\{]|^)\\s*((?!type|module|var|timer|signature|template|function|altstep|testcase)([[:alpha:]][[:word:]]*)(?=[[:space:]]))\\s+((?!optional)([[:alpha:]][[:word:]]*)\\s*(?=[:;,\\[\\)\\}\\r\\n]))"
                 }
             ]
         },
@@ -292,15 +307,6 @@
                 {
                     "name": "entity.name.method.round.ttcn",
                     "match": "(?<=[\\{\\(\\[[:space:]\\.])([[:alpha:]][[:word:]]*)\\s*(?=[\\(])"
-                },
-                {
-                    "comment": "user-defined type",
-                    "captures": {
-                        "1": {
-                            "name": "keyword.other.type.ttcn"
-                        }
-                    },
-                    "match": "(?<!\\.)(?<=[,[:space:]\\(\\{]|^)\\s*((?!type|module|var|timer|signature|template|function|altstep|testcase)([[:alpha:]][[:word:]]*)(?=[[:space:]]))\\s+((?!optional)([[:alpha:]][[:word:]]*)\\s*(?=[:;,\\[\\)\\}\\r\\n]))"
                 }
             ]
         },
