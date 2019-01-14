@@ -8,7 +8,7 @@
 Provides TTCN-3 language support for Visual Studio Code
 
 ### Features
-- Syntax highlighting<br /><p><img src="https://raw.githubusercontent.com/ealap/vscode-language-ttcn/dev-ealap/images/vscode-ss-ttcn3.png" alt="Figure 001. TTCN-3 Sample Code" /></p>
+- Syntax highlighting<br /><p><img src="./images/vscode-ss-ttcn3.png" alt="Figure 001. TTCN-3 Sample Code" style="max-width: 55%; height: auto; overflow: hidden;"/></p>
 
 ### Release Notes
 #### 0.7.0
