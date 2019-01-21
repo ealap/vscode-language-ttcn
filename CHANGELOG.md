@@ -2,6 +2,12 @@
 ## TTCN-3 Language Support for Visual Studio Code
 ## Change Log
 
+#### 0.9.0
+- Improved support for highlighting user-defined keywords
+- Improved support for highlighting function modifiers
+- Fixed more issues with highlighting identifiers
+- Fixed issue with matching inequality and rotate operators
+
 #### 0.8.0
 - Fixed issue with highlighting identifiers paired with built-in keywords
 - Fixed missing highlight when defining user-defined types

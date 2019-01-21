@@ -11,9 +11,11 @@ Provides TTCN-3 language support for Visual Studio Code
 - Syntax highlighting<br /><p><img src="https://raw.githubusercontent.com/ealap/vscode-language-ttcn/master/images/vscode-ss-ttcn3.png" alt="Figure 001. TTCN-3 Sample Code" style="max-width: 40%; height: auto; overflow: hidden;"/></p>
 
 ### Release Notes
-#### 0.8.0
-- Fixed issue with highlighting identifiers paired with built-in keywords
-- Fixed missing highlight when defining user-defined types
+#### 0.9.0
+- Improved support for highlighting user-defined keywords
+- Improved support for highlighting function modifiers
+- Fixed more issues with highlighting identifiers
+- Fixed issue with matching inequality and rotate operators
 
 #### Older releases
 See [CHANGELOG](https://raw.githubusercontent.com/ealap/vscode-language-ttcn/master/CHANGELOG.md)
