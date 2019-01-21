@@ -297,8 +297,8 @@
                     "match": "(?<=[\\{\\(\\[\\][:space:];]|^)([[:alpha:]][[:word:]]*)(?=\\[\\S+\\][\\.])"
                 },
                 {
-                    "name": "keyword.other.class.dot.ttcn",
-                    "match": "(?<=[\\{\\(\\[\\][:space:];,]|^)(?!infinity|not_a_number)([[:alpha:]][[:word:]]*)(?=[\\.])"
+                    "name": "entity.name.function.module.ttcn",
+                    "match": "(?<=[\\{\\(\\[\\][:space:];,]|^)(?!infinity|not_a_number)([[:upper:]][[:word:]]*)(?=[\\.])"
                 },
                 {
                     "name": "entity.name.method.dot.ttcn",
