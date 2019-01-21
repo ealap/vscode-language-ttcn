@@ -402,9 +402,9 @@
                     "match": "(?<![&])([&])(?![&])"
                 },
                 {
-                    "comment": "relational operators (==, !=, <, <=, >, >=)",
+                    "comment": "relational operators (==, !=, >, >=, <, <=)",
                     "name": "keyword.operator.relational.ttcn",
-                    "match": "(\\=\\=)|(\\!\\=)|(\\b\\s*(\\<)\\s*\\b)|(\\b\\s*(\\<\\=)\\s*\\b)|(\\b\\s*(\\>)\\s*\\b)|(\\b\\s*(\\>\\=)\\s*\\b)"
+                    "match": "(\\=\\=)|(\\!\\=)|(\\s*(\\>)(\\=*)\\s*)|(\\s*(\\<)(\\=*|)(?!@)\\s*)"
                 },
                 {
                     "comment": "logical operators",
@@ -424,7 +424,7 @@
                 {
                     "comment": "rotate operators (<@, @>)",
                     "name": "keyword.operator.rotate.ttcn",
-                    "match": "(\\<@)|(@\\>)"
+                    "match": "(\\<@|@\\>)"
                 }
             ]
         },
