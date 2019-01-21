@@ -298,6 +298,11 @@
                         }
                     },
                     "match": "(?<=[[:^word:]]module)\\s+([[:alpha:]][[:word:]]*)\\s*,\\s*([[:alpha:]][[:word:]]*)(?=[\\{\\}[:space:];])"
+                },
+                {
+                    "comment": "modified function identifier",
+                    "name": "entity.name.method.modified.ttcn",
+                    "match": "(?<=@deterministic)\\s+([[:alpha:]][[:word:]]*)(?=[[:space:]\\(\\)\\{\\}\\;])"
                 }
             ]
         },
@@ -566,6 +571,37 @@
                 {
                     "name": "invalid.illegal.identifier.ttcn",
                     "match": "(?<=[[:^word:]]on|[[:^word:]]const|[[:^word:]]from|[[:^word:]]mtc|[[:^word:]]system|[[:^word:]]template|[[:^word:]]var)\\s+([[:word:]]*[^[:word:][:space:]\\.\\;\\(\\)\\{\\}\\[\\]]\\S*)(?=[[:space:]\\.\\;\\(\\)\\{\\}\\[\\]])"
+                },
+                {
+                    "name": "invalid.illegal.identifier.ttcn",
+                    "match": "(?<=@deterministic)\\s+([[:word:]]*[^[:word:][:space:]\\@\\;\\(\\)\\{\\}\\[\\]][[:word:]]*)(?=[[:space:];\\(\\)\\{\\}\\[\\]])"
+                },
+                {
+                    "name": "invalid.illegal.identifier.ttcn",
+                    "match": "(?<=@deterministic)\\s+([[:word:]]*[^[:word:][:space:]\\@\\;\\(\\)\\{\\}\\[\\]][[:word:]]*)(?=[[:space:];\\(\\)\\{\\}\\[\\]])"
+                },
+                {
+                    "name": "invalid.illegal.identifier.ttcn",
+                    "match": "(?<=@deterministic)\\s+(\\S*[^[:word:][:space:]\\@\\;\\(\\)\\{\\}\\[\\]][[:word:]]*)(?=[[:space:];\\(\\)\\{\\}\\[\\]])"
+                },
+                {
+                    "name": "invalid.illegal.identifier.ttcn",
+                    "match": "(?<=@deterministic)\\s+(\\S*[^[:word:][:space:]\\@\\;\\(\\)\\{\\}\\[\\]]\\S*)(?=[[:space:];\\(\\)\\{\\}\\[\\]])"
+                },
+                {
+                    "name": "invalid.illegal.identifier.ttcn",
+                    "match": "(?<=@deterministic)\\s+([[:word:]]*[^[:word:][:space:]\\@\\;\\(\\)\\{\\}\\[\\]]\\S*)(?=[[:space:];\\(\\)\\{\\}\\[\\]])"
+                },
+                {
+                    "captures": {
+                        "2": {
+                            "name": "keyword.other.user.ttcn"
+                        },
+                        "3": {
+                            "name": "entity.other.user.ttcn"
+                        }
+                    },
+                    "match": "((?<!\\.)([[:alpha:]][[:word:]]*))\\s+([[:digit:]_][[:word:]]*)"
                 },
                 {
                     "name": "invalid.illegal.numstring.ttcn",
