@@ -310,11 +310,11 @@
             "patterns": [
                 {
                     "name": "variable.parameter.assignment.ttcn",
-                    "match": "(?<!\\.)([[:alpha:]][[:word:]]*)\\s*(?=(\\:\\=|[\\>\\<\\!\\=\\@]))"
+                    "match": "(?<!\\.)([[:alpha:]][[:word:]]*)\\s*(?=(\\:\\=))"
                 },
                 {
                     "name": "variable.parameter.assignment.square.ttcn",
-                    "match": "(?<!\\.)([[:alpha:]][[:word:]]*)\\s*(?=(\\[[\\S]*\\]\\s*(:\\=|[\\>\\<\\!\\=\\@])))"
+                    "match": "(?<!\\.)([[:alpha:]][[:word:]]*)\\s*(?=(\\[[\\S]*\\]\\s*(:\\=)))"
                 },
                 {
                     "name": "keyword.other.square.ttcn",
