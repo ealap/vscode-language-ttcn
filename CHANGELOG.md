@@ -2,6 +2,19 @@
 ## TTCN-3 Language Support for Visual Studio Code
 ## Change Log
 
+#### 0.11.0
+- Added snippets for TTCN-3
+- Added support for altsteps with interleave functionality <sup>TTCN-3:2019</sup>
+- Added support for control functions <sup>TTCN-3:2019</sup>
+- Added support for keywords from object-oriented features <sup>TTCN-3:2019</sup>
+- Added support for keywords and operators from advanced matching features <sup>TTCN-3:2019</sup>
+- Added support for qualified form of enum values <sup>TTCN-3:2019</sup>
+- Added support for tokenizing alt (array notation) operator
+- Fixed tokenization of identifiers preceded by control and deterministic modifiers
+- Fixed tokenization of user-defined keywords
+- Fixed tokenization of modules, functions, and variables using dot notation
+- Fixed tokenization of illegal identifiers
+
 #### 0.10.0
 - Improved support for highlighting user-defined keywords
 - Fixed issue with matching comma-separated identifiers
