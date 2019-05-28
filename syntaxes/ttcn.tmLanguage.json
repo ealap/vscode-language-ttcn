@@ -155,7 +155,7 @@
                             "name": "keyword.other.user.ttcn"
                         }
                     },
-                    "match": "((?<!\\.)([[:alpha:]][[:word:]]*))\\s+((?!\\b(type|module|var|timer|signature|template|function|altstep|testcase|const|all|abstract|decoded|default|deterministic|dynamic|final|fuzzy|index|lazy|local|mutation|mutation_o|mutation_unichar|nocase|address|alt|any|anytype|apply|assert|at|bitstring|boolean|break|char|charstring|class|component|configuration|conjunct|cont|continue|control|deactivate|decmatch|delta|disjunct|display|do|duration|encode|enumerated|except|extends|extension|external|finally|finished|float|friend|from|getverdict|goto|group|hexstring|history|ifpresent|implies|import|in|inout|integer|interleave|inv|label|language|message|mixed|mode|modifies|modulepar|mtc|noblock|notinv|now|nowait|null|object|octetstring|of|omit|on|onentry|onexit|optional|out|override|par|port|present|prev|private|procedure|public|realtime|record|recursive|repeat|return|runs|self|sender|seq|set|setstate|static|stepsize|stream|system|timestamp|to|universal|unmap|until|value|values|variant|verdicttype|wait|with|action|activate|alive|any2unistr|bit2hex|bit2int|bit2oct|bit2str|call|case|catch|char2int|char2oct|check|checkstate|clear|complement|connect|create|decvalue|decvalue_o|decvalue_unichar|disconnect|done|else|encvalue|encvalue_o|encvalue_unichar|enum2int|exception|execute|float2int|for|getcall|getreply|get_stringencoding|halt|hex2bit|hex2int|hex2oct|hex2str|hostid|if|int2bit|int2char|int2enum|int2float|int2hex|int2oct|int2str|int2unichar|isbound|ischosen|ispresent|istemplatekind|isvalue|kill|killed|length|lengthof|log|map|match|oct2bit|oct2char|oct2hex|oct2int|oct2str|oct2unichar|param|pattern|permutation|raise|read|receive|regexp|remove_bom|replace|reply|rnd|running|select|send|setencode|setverdict|sizeof|start|stop|str2float|str2hex|str2int|str2oct|subset|substr|superset|testcasename|this|timeout|trigger|unichar2int|unichar2oct|union|valueof|while|infinity|not_a_number|false|true|pass|fail|inconc|error|none|mod|rem|not|and|or|xor|not4b|and4b|or4b|xor4b)\\b)[[:alpha:]][[:word:]]*)(?=[[:space:]\\)\\}\\]\\,\\;])"
+                    "match": "((?!\\.)([[:alpha:]][[:word:]]*))\\s+((?!\\b(type|module|var|timer|signature|template|function|altstep|testcase|const|all|abstract|decoded|default|deterministic|dynamic|final|fuzzy|index|lazy|local|mutation|mutation_o|mutation_unichar|nocase|address|alt|any|anytype|apply|assert|at|bitstring|boolean|break|char|charstring|class|component|configuration|conjunct|cont|continue|control|deactivate|decmatch|delta|disjunct|display|do|duration|encode|enumerated|except|extends|extension|external|finally|finished|float|friend|from|getverdict|goto|group|hexstring|history|ifpresent|implies|import|in|inout|integer|interleave|inv|label|language|message|mixed|mode|modifies|modulepar|mtc|noblock|notinv|now|nowait|null|object|octetstring|of|omit|on|onentry|onexit|optional|out|override|par|port|present|prev|private|procedure|public|realtime|record|recursive|repeat|return|runs|self|sender|seq|set|setstate|static|stepsize|stream|system|timestamp|to|universal|unmap|until|value|values|variant|verdicttype|wait|with|action|activate|alive|any2unistr|bit2hex|bit2int|bit2oct|bit2str|call|case|catch|char2int|char2oct|check|checkstate|clear|complement|connect|create|decvalue|decvalue_o|decvalue_unichar|disconnect|done|else|encvalue|encvalue_o|encvalue_unichar|enum2int|exception|execute|float2int|for|getcall|getreply|get_stringencoding|halt|hex2bit|hex2int|hex2oct|hex2str|hostid|if|int2bit|int2char|int2enum|int2float|int2hex|int2oct|int2str|int2unichar|isbound|ischosen|ispresent|istemplatekind|isvalue|kill|killed|length|lengthof|log|map|match|oct2bit|oct2char|oct2hex|oct2int|oct2str|oct2unichar|param|pattern|permutation|raise|read|receive|regexp|remove_bom|replace|reply|rnd|running|select|send|setencode|setverdict|sizeof|start|stop|str2float|str2hex|str2int|str2oct|subset|substr|superset|testcasename|this|timeout|trigger|unichar2int|unichar2oct|union|valueof|while|infinity|not_a_number|false|true|pass|fail|inconc|error|none|mod|rem|not|and|or|xor|not4b|and4b|or4b|xor4b)\\b)[[:alpha:]][[:word:]]*)(?=[[:space:]\\)\\}\\]\\,\\;])"
                 }
             ]
         },
@@ -305,11 +305,11 @@
             "patterns": [
                 {
                     "name": "variable.parameter.assignment.ttcn",
-                    "match": "(?<!\\.)([[:alpha:]][[:word:]]*)\\s*(?=(\\:\\=))"
+                    "match": "(?!\\.)([[:alpha:]][[:word:]]*)\\s*(?=(\\:\\=))"
                 },
                 {
                     "name": "variable.parameter.assignment.square.ttcn",
-                    "match": "(?<!\\.)([[:alpha:]][[:word:]]*)\\s*(?=(\\[[\\S]*\\]\\s*(:\\=)))"
+                    "match": "(?!\\.)([[:alpha:]][[:word:]]*)\\s*(?=(\\[[\\S]*\\]\\s*(:\\=)))"
                 },
                 {
                     "name": "constant.numeric.method.square.ttcn",
@@ -363,7 +363,7 @@
                 {
                     "comment": "special number: not_a_number",
                     "name": "constant.numeric.nan.ttcn",
-                    "match": "(?<!-)\\b(not_a_number)\\b"
+                    "match": "(?!\\-)\\b(not_a_number)\\b"
                 },
                 {
                     "comment": "special number: infinity",
@@ -402,7 +402,7 @@
                 {
                     "comment": "statement separator symbol [.;,]",
                     "name": "string.unquoted.separator.ttcn",
-                    "match": "(?<![\\.\\:\\;\\,])([\\.\\:\\;\\,])(?![\\.\\:\\;\\,])"
+                    "match": "([\\.\\:\\;\\,])(?![\\.\\:\\;\\,])"
                 },
                 {
                     "comment": "wildcard/matching symbol [?*]",
@@ -422,7 +422,7 @@
                 {
                     "comment": "string operators [&]",
                     "name": "keyword.operator.concatenation.ttcn",
-                    "match": "(?<![&])([&])(?![&])"
+                    "match": "([&])(?![&])"
                 },
                 {
                     "comment": "relational operators (==, !=, >, >=, <, <=)",
@@ -598,7 +598,7 @@
                             "name": "entity.other.user.ttcn"
                         }
                     },
-                    "match": "((?<!\\.)([[:alpha:]][[:word:]]*))\\s+([[:digit:]_][[:word:]]*)"
+                    "match": "((?!\\.)([[:alpha:]][[:word:]]*))\\s+([[:digit:]_][[:word:]]*)"
                 },
                 {
                     "name": "invalid.illegal.numstring.ttcn",

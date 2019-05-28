@@ -2,6 +2,10 @@
 ## TTCN-3 Language Support for Visual Studio Code
 ## Change Log
 
+#### 0.12.0
+- Added support for tokenizing escaped double quotes
+- Fixed issue with user-defined keyword matching
+
 #### 0.11.0
 - Added snippets for TTCN-3
 - Added support for altsteps with interleave functionality <sup>TTCN-3:2019</sup>

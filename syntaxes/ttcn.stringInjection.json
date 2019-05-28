@@ -1,0 +1,15 @@
+{
+    "scopeName": "string.injection",
+    "injectionSelector": "L:string.quoted.double.ttcn",
+    "patterns": [
+        {
+            "include": "#escape-double-quote"
+        }
+    ],
+    "repository": {
+        "escape-double-quote": {
+            "match": "\"\"",
+            "name": "constant.character.escape.double-quote.ttcn"
+        }
+    }
+}
