@@ -58,13 +58,6 @@
                 "language": "ttcn",
                 "scopeName": "source.ttcn",
                 "path": "./syntaxes/ttcn.tmLanguage.json"
-            },
-            {
-                "scopeName": "string.injection",
-                "path": "./syntaxes/ttcn.stringInjection.json",
-                "injectTo": [
-                    "source.ttcn"
-                ]
             }
         ],
         "snippets": [
