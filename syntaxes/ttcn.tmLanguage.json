@@ -476,10 +476,15 @@
             "end": "\"",
             "patterns": [
                 {
-                    "name": "constant.character.escape.ttcn",
-                    "match": "\\\\."
+                    "name": "constant.character.escape.double-quote.ttcn",
+                    "match": "\"\""
+                },
+                {
+                    "name": "string.regexp.ttcn",
+                    "match": "\\\\[\\\\\"bdnrstw]"
                 }
-            ]
+            ],
+            "applyEndPatternLast": 1
         },
         "comments": {
             "patterns": [
