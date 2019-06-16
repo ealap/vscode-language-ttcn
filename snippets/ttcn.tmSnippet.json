@@ -75,7 +75,7 @@
     "keyword altstep": {
         "prefix": "altstep",
         "body": [
-            "altstep ${1:altstepIdentifier}(${2:arguments}) runs on ${3:componentIdentifier} {",
+            "altstep ${1:altstepIdentifier}(${2:arguments}) ${3:runs on ${4:componentIdentifier}} {",
             "\t${0}",
             "}"
         ],
@@ -84,7 +84,7 @@
     "keyword function": {
         "prefix": "function",
         "body": [
-            "function ${1:functionIdentifier}(${2:arguments}) runs on ${3:componentIdentifier} {",
+            "function ${1:functionIdentifier}(${2:arguments}) ${3:runs on ${4:componentIdentifier}} {",
             "\t${0}",
             "}"
         ],
@@ -93,7 +93,7 @@
     "keyword testcase": {
         "prefix": "testcase",
         "body": [
-            "testcase ${1:testcaseIdentifier}(${2:arguments}) runs on ${3:componentIdentifier} {",
+            "testcase ${1:testcaseIdentifier}(${2:arguments}) ${3:runs on ${4:componentIdentifier}} {",
             "\t${0}",
             "}"
         ],
@@ -351,7 +351,7 @@
     },
     "keyword import": {
         "prefix": "import",
-        "body": ["import from ${1:moduleIdentifier} ${0:all;}"],
+        "body": ["import from ${1:moduleIdentifier} ${2:all;}${0}"],
         "description": ""
     },
     "keyword in": {
@@ -684,25 +684,33 @@
         "body": ["any2unistr(${1})${0}"],
         "description": ""
     },
-    "function bit2hex": {
+    "bit2hex": {
         "prefix": ["bit2hex", "2hex"],
-        "body": ["bit2hex(${1})${0}"],
-        "description": ""
+        "body": ["bit2hex(${1:invalue})${0}"],
+        "description": [
+            "bit2hex(in bitstring invalue) return hexstring\n\n"
+        ]
     },
-    "function bit2int": {
+    "bit2int": {
         "prefix": ["bit2int", "2int"],
-        "body": ["bit2int(${1})${0}"],
-        "description": ""
+        "body": ["bit2int(${1:invalue})${0}"],
+        "description": [
+            "bit2int(in bitstring invalue) return integer\n\n"
+        ]
     },
-    "function bit2oct": {
+    "bit2oct": {
         "prefix": ["bit2oct", "2oct"],
-        "body": ["bit2oct(${1})${0}"],
-        "description": ""
+        "body": ["bit2oct(${1:invalue})${0}"],
+        "description": [
+            "bit2oct(in bitstring invalue) return octetstring\n\n"
+        ]
     },
-    "function bit2str": {
+    "bit2str": {
         "prefix": ["bit2str", "2str"],
-        "body": ["bit2str(${1})${0}"],
-        "description": ""
+        "body": ["bit2str(${1:invalue})${0}"],
+        "description": [
+            "bit2str(in bitstring invalue) return charstring\n\n"
+        ]
     },
     "function call": {
         "prefix": "call",
@@ -714,15 +722,20 @@
         "body": ["catch(${1})${0}"],
         "description": ""
     },
-    "function char2int": {
+    "char2int": {
         "prefix": ["char2int", "2int"],
-        "body": ["char2int(${1})${0}"],
-        "description": ""
+        "body": ["char2int(${1:invalue})${0}"],
+        "description": [
+            "char2inst(in charstring invalue) return integer",
+            "* an error would occur if length of invalue != 1\n\n"
+        ]
     },
-    "function char2oct": {
+    "char2oct": {
         "prefix": ["char2oct", "2oct"],
-        "body": ["char2oct(${1})${0}"],
-        "description": ""
+        "body": ["char2oct(${1:invalue})${0}"],
+        "description": [
+            "char2oct(in charstring invalue) return octetstring"
+        ]
     },
     "function check": {
         "prefix": "check",
@@ -809,10 +822,13 @@
         "body": ["execute(${1})${0}"],
         "description": ""
     },
-    "function float2int": {
+    "float2int": {
         "prefix": ["float2int", "2int"],
-        "body": ["float2int(${1})${0}"],
-        "description": ""
+        "body": ["float2int(${1:invalue})${0}"],
+        "description": [
+            "float2int(in float invalue) return integer",
+            "* an error would occur if invalue is infinity, -infinity, or not_a_number\n\n"
+        ]
     },
     "function getcall": {
         "prefix": "getcall",
@@ -836,68 +852,100 @@
     },
     "function hex2bit": {
         "prefix": ["hex2bit", "2bit"],
-        "body": ["hex2bit(${1})${0}"],
-        "description": ""
+        "body": ["hex2bit(${1:invalue})${0}"],
+        "description": [
+            "hex2bit(in hexstring invalue) return bitstring\n\n"
+        ]
     },
-    "function hex2int": {
+    "hex2int": {
         "prefix": ["hex2int", "2int"],
-        "body": ["hex2int(${1})${0}"],
-        "description": ""
+        "body": ["hex2int(${1:invalue})${0}"],
+        "description": [
+            "hex2int(in hexstring invalue) return integer\n\n"
+        ]
     },
-    "function hex2oct": {
+    "hex2oct": {
         "prefix": ["hex2oct", "2oct"],
-        "body": ["hex2oct(${1})${0}"],
-        "description": ""
+        "body": ["hex2oct(${1:invalue})${0}"],
+        "description": [
+            "hex2oct(in hexstring invalue) return octetstring\n\n"
+        ]
     },
-    "function hex2str": {
+    "hex2str": {
         "prefix": ["hex2str", "2str"],
-        "body": ["hex2str(${1})${0}"],
-        "description": ""
+        "body": ["hex2str(${1:invalue})${0}"],
+        "description": [
+            "hex2str(in hexstring invalue) return charstring\n\n"
+        ]
     },
     "function hostid": {
         "prefix": "hostid",
         "body": ["hostid(${1})${0}"],
         "description": ""
     },
-    "function int2bit": {
+    "int2bit": {
         "prefix": ["int2bit", "2bit"],
-        "body": ["int2bit(${1})${0}"],
-        "description": ""
+        "body": ["int2bit(${1:invalue}, ${2:length})${0}"],
+        "description": [
+            "int2bit(in integer invalue, in integer length) return bitstring",
+            "* where invalue range should be greater than 0",
+            "* an error would occur if return value has more bits than the specified length\n\n"
+        ]
     },
-    "function int2char": {
+    "int2char": {
         "prefix": ["int2char", "2char"],
-        "body": ["int2char(${1})${0}"],
-        "description": ""
+        "body": ["int2char(${1:invalue})${0}"],
+        "description": [
+            "int2char(in integer invalue) return charstring",
+            "* where invalue range is 0-127\n\n"
+        ]
     },
-    "function int2enum": {
+    "int2enum": {
         "prefix": ["int2enum", "2enum"],
-        "body": ["int2enum(${1})${0}"],
-        "description": ""
+        "body": ["int2enum(${1:inpar}, ${2:outpar})${0}"],
+        "description": [
+            "int2enum(in integer inpar, out EnumType outpar)\n\n"
+        ]
     },
-    "function int2float": {
+    "int2float": {
         "prefix": ["int2float", "2float"],
-        "body": ["int2float(${1})${0}"],
-        "description": ""
+        "body": ["int2float(${1:invalue})${0}"],
+        "description": [
+            "int2float(in integer invalue) return float\n\n"
+        ]
     },
-    "function int2hex": {
+    "int2hex": {
         "prefix": ["int2hex", "2hex"],
-        "body": ["int2hex(${1})${0}"],
-        "description": ""
+        "body": ["int2hex(${1:invalue}, ${2:length)${0}"],
+        "description": [
+            "int2hex(in integer invalue, in integer length) return hexstring",
+            "* where invalue range should be greater than 0",
+            "* an error would occur if return value has more bits than the specified length\n\n"
+        ]
     },
-    "function int2oct": {
+    "int2oct": {
         "prefix": ["int2oct", "2oct"],
-        "body": ["int2oct(${1})${0}"],
-        "description": ""
+        "body": ["int2oct(${1:invalue}, ${2:length)${0}"],
+        "description": [
+            "int2oct(in integer invalue, in integer length) return octetstring",
+            "* where invalue range should be greater than 0",
+            "* an error would occur if return value has more bits than the specified length\n\n"
+        ]
     },
-    "function int2str": {
+    "int2str": {
         "prefix": ["int2str", "2str"],
-        "body": ["int2str(${1})${0}"],
-        "description": ""
+        "body": ["int2str(${1:invalue})${0}"],
+        "description": [
+            "int2str(in integer invalue) return charstring\n\n"
+        ]
     },
-    "function int2unichar": {
+    "int2unichar": {
         "prefix": ["int2unichar", "2unichar"],
-        "body": ["int2unichar(${1})${0}"],
-        "description": ""
+        "body": ["int2unichar(${1:invalue})${0}"],
+        "description": [
+            "int2unichar(in integer invalue) return universal charstring",
+            "* where invalue range is 0-2147483647\n\n"
+        ]
     },
     "function isbound": {
         "prefix": "isbound",
@@ -959,35 +1007,47 @@
         "body": ["match(${1})${0}"],
         "description": ""
     },
-    "function oct2bit": {
+    "oct2bit": {
         "prefix": ["oct2bit", "2bit"],
-        "body": ["oct2bit(${1})${0}"],
-        "description": ""
+        "body": ["oct2bit(${1:invalue})${0}"],
+        "description": [
+            "oct2bit(in octetstring invalue) return bitstring\n\n"
+        ]
     },
-    "function oct2char": {
+    "oct2char": {
         "prefix": ["oct2char", "2char"],
-        "body": ["oct2char(${1})${0}"],
-        "description": ""
+        "body": ["oct2char(${1:invalue})${0}"],
+        "description": [
+            "oct2char(in octetstring invalue) return charstring\n\n"
+        ]
     },
-    "function oct2hex": {
+    "oct2hex": {
         "prefix": ["oct2hex", "2hex"],
-        "body": ["oct2hex(${1})${0}"],
-        "description": ""
+        "body": ["oct2hex(${1:invalue})${0}"],
+        "description": [
+            "oct2hex(in octetstring invalue) return hexstring\n\n"
+        ]
     },
-    "function oct2int": {
+    "oct2int": {
         "prefix": ["oct2int", "2int"],
-        "body": ["oct2int(${1})${0}"],
-        "description": ""
+        "body": ["oct2int(${1:invalue})${0}"],
+        "description": [
+            "oct2int(in octetstring invalue) return integer\n\n"
+        ]
     },
-    "function oct2str": {
+    "oct2str": {
         "prefix": ["oct2str", "2str"],
-        "body": ["oct2str(${1})${0}"],
-        "description": ""
+        "body": ["oct2str(${1:invalue})${0}"],
+        "description": [
+            "oct2str(in octetstring invalue) return charstring\n\n"
+        ]
     },
-    "function oct2unichar": {
+    "oct2unichar": {
         "prefix": ["oct2unichar", "2unichar"],
-        "body": ["oct2unichar(${1})${0}"],
-        "description": ""
+        "body": ["oct2unichar(${1:invalue}, ${2:encoding})${0}\n\n"],
+        "description": [
+            "oct2unichar(in octetstring invalue, in charstring encoding := \"UTF-8\") return universal charstring\n\n"
+        ]
     },
     "function param": {
         "prefix": "param",
@@ -1079,20 +1139,29 @@
         "body": ["stop(${1})${0}"],
         "description": ""
     },
-    "function str2float": {
+    "str2float": {
         "prefix": ["str2float", "2float"],
-        "body": ["str2float(${1})${0}"],
-        "description": ""
+        "body": ["str2float(${1:invalue})${0}"],
+        "description": [
+            "str2float(in charstring invalue) return float",
+            "* leading zeros are allowed",
+            "* leading \"+\" sign before positive values is allowed",
+            "* -0.0 is allowed"
+        ]
     },
     "function str2hex": {
         "prefix": ["str2hex", "2hex"],
         "body": ["str2hex(${1})${0}"],
         "description": ""
     },
-    "function str2int": {
+    "str2int": {
         "prefix": ["str2int", "2int"],
-        "body": ["str2int(${1})${0}"],
-        "description": ""
+        "body": ["str2int(${1:invalue})${0}"],
+        "description": [
+            "str2int(in charstring invalue) return integer",
+            "* an error would occur if invalue contains characters other than numbers 0-9",
+            "* an error would occur if the character \"-\" is at another position other than the leftmost one\n\n"
+        ]
     },
     "function str2oct": {
         "prefix": ["str2oct", "2oct"],
@@ -1136,8 +1205,11 @@
     },
     "function unichar2int": {
         "prefix": ["unichar2int", "2int"],
-        "body": ["unichar2int(${1})${0}"],
-        "description": ""
+        "body": ["unichar2int(${1:invalue})${0}"],
+        "description": [
+            "unichar2int(in universal charstring invalue) return integer",
+            "* an error would occur if length of invalue != 1\n\n"
+        ]
     },
     "function unichar2oct": {
         "prefix": ["unichar2oct", "2oct"],
