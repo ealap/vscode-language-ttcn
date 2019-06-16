@@ -12,9 +12,10 @@ Provides TTCN-3 language support for Visual Studio Code
 - Syntax highlighting<br /><p><img src="https://raw.githubusercontent.com/ealap/vscode-language-ttcn/master/images/vscode-ss-ttcn3.png" alt="Figure 001. TTCN-3 Sample Code" style="max-width: 40%; height: auto; overflow: hidden;"/></p>
 
 ### Release Notes
-#### 0.12.0
-- Added support for tokenizing escaped double quotes
-- Fixed issue with user-defined keyword matching
+#### 0.13.0
+- Fixed [issue (#26)](https://github.com/ealap/vscode-language-ttcn/issues/26) about missing grammar for type parameterization
+- Reworked matching escape characters inside strings
+- Improved snippets
 
 #### Older releases
 See [CHANGELOG](https://raw.githubusercontent.com/ealap/vscode-language-ttcn/master/CHANGELOG.md)
