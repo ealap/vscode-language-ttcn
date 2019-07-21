@@ -664,7 +664,7 @@
         "body": ["with ${0}"],
         "description": ""
     },
-    "function action": {
+    "action": {
         "prefix": "action",
         "body": ["action(${1})${0}"],
         "description": ""
@@ -679,10 +679,12 @@
         "body": ["alive(${1})${0}"],
         "description": ""
     },
-    "function any2unistr": {
+    "any2unistr": {
         "prefix": ["any2unistr", "2unistr"],
-        "body": ["any2unistr(${1})${0}"],
-        "description": ""
+        "body": ["any2unistr(${1:invalue}, ${2:format})${0}"],
+        "description": [
+            "any2unistr(in template any_time invalue, in universalcharstring format := \"\") return universal charstring\n\n"
+        ]
     },
     "bit2hex": {
         "prefix": ["bit2hex", "2hex"],
@@ -767,20 +769,26 @@
         "body": ["create(${1})${0}"],
         "description": ""
     },
-    "function decvalue": {
+    "decvalue": {
         "prefix": "decvalue",
-        "body": ["decvalue(${1})${0}"],
-        "description": ""
+        "body": ["decvalue(${1:encoded_value}, ${2:decoded_value}, ${3:decoding_info}, ${4:dynamic_encoding})${0}"],
+        "description": [
+            "decvalue(inout bitstring encoded_value, out any_type decoded_value, in universal charstring decoding_info := \"\", in universal charstring dynamic_encoding := \"\") return integer\n\n"
+        ]
     },
-    "function decvalue_o": {
+    "decvalue_o": {
         "prefix": "decvalue_o",
-        "body": ["decvalue_o(${1})${0}"],
-        "description": ""
+        "body": ["decvalue_o(${1:encoded_value}, ${2:decoded_value}, ${3:decoding_info}, ${4:dynamic_encoding})${0}"],
+        "description": [
+            "decvalue_o(inout octetstring encoded_value, out any_type decoded_value, in universal charstring decoding_info := \"\", in universal charstring dynamic_encoding := \"\") return integer\n\n"
+        ]
     },
-    "function decvalue_unichar": {
+    "decvalue_unichar": {
         "prefix": "decvalue_unichar",
-        "body": ["decvalue_unichar(${1})${0}"],
-        "description": ""
+        "body": ["decvalue_unichar(${1:encoded_value}, ${2:decoded_value}, ${3:string_serialization}, ${4:decoding_info}, ${5:dynamic_encoding})${0}"],
+        "description": [
+            "decvalue_unichar(inout universal charstring encoded_value, out any_type decoded_value, in charstring  string_serialization := \"UTF-8\", in universal charstring decoding_info := \"\", in universal charstring dynamic_encoding := \"\") return integer\n\n"
+        ]
     },
     "function disconnect": {
         "prefix": "disconnect",
@@ -792,10 +800,13 @@
         "body": ["done(${1})${0}"],
         "description": ""
     },
-    "function encvalue": {
+    "encvalue": {
         "prefix": "encvalue",
-        "body": ["encvalue(${1})${0}"],
-        "description": ""
+        "body": ["encvalue(${1:inpar}, ${2:encoding_info}, ${3:dynamic_encoding})${0}"],
+        "description": [
+            "encvalue(in template (value) any_type inpar, in universal charstring encoding_info := \"\", in universal charstring dynamic_encoding := \"\") return bitstring",
+            "* an error would occur if there is no existing encoding function for actual type of inpar\n\n"
+        ]
     },
     "function encvalue_o": {
         "prefix": "encvalue_o",
