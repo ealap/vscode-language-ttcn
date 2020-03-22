@@ -338,7 +338,7 @@
                 },
                 {
                     "name": "entity.name.method.round.ttcn",
-                    "match": "(?<=^|[[:space:]\\{\\(\\[\\.])([[:alpha:]][[:word:]]*)\\s*(?=[\\(])(?!\\s*\\S+\\s*\\.\\.)"
+                    "match": "(?<=^|[[:space:]\\{\\(\\[\\.])(?!\\+|mod|rem|not|and|or|xor|not4b|and4b|or4b|xor4b)([[:alpha:]][[:word:]]*)\\s*(?=[\\(])(?!\\s*\\S+\\s*\\.\\.)"
                 }
             ]
         },
@@ -424,9 +424,14 @@
                     "match": "\\.{2}"
                 },
                 {
-                    "comment": "arithmetic operators [+-*/] (mod,rem)",
+                    "comment": "arithmetic operators [+-*/]",
                     "name": "keyword.operator.arithmetic.ttcn",
-                    "match": "\\b\\s*(\\+|-|\\*|/|mod|rem)\\s*\\b"
+                    "match": "[\\+\\-\\*\\/](?![\\*\\/])"
+                },
+                {
+                    "comment": "arithmetic operators (mod, rem)",
+                    "name": "keyword.operator.arithmetic.ttcn",
+                    "match": "(\\b(mod|rem)\\b)"
                 },
                 {
                     "comment": "string operators [&]",
