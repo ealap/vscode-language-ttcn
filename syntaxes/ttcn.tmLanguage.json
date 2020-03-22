@@ -132,7 +132,7 @@
                 },
                 {
                     "name": "keyword.other.ttcn",
-                    "match": "(?x) \\b(universal|unmap|until)\\b"
+                    "match": "(?x) \\b(universal|until)\\b"
                 },
                 {
                     "name": "keyword.other.ttcn",
@@ -231,7 +231,7 @@
                 },
                 {
                     "name": "entity.name.method.ttcn",
-                    "match": "(?x) \\b(unichar2int|unichar2oct|union)\\b"
+                    "match": "(?x) \\b(unichar2int|unichar2oct|union|unmap)\\b"
                 },
                 {
                     "name": "entity.name.method.ttcn",
