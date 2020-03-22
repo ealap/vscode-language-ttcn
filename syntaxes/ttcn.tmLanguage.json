@@ -72,7 +72,7 @@
                 },
                 {
                     "name": "keyword.other.ttcn",
-                    "match": "(?x) \\b(char|charstring|class|component|configuration|conjunct|cont|continue|control)\\b"
+                    "match": "(?x) \\b(char|charstring|component|conjunct|cont|continue|control)\\b"
                 },
                 {
                     "name": "keyword.other.ttcn",
@@ -141,6 +141,11 @@
                 {
                     "name": "keyword.other.ttcn",
                     "match": "(?x) \\b(wait|with)\\b"
+                },
+                {
+                    "comment": "Custom ambiguous keywords",
+                    "name": "keyword.other.ttcn",
+                    "match": "(?x) \\b(class|configuration)\\b(?!([\\.\\(]|\\s*:))"
                 },
                 {
                     "include": "#user-keyword"
