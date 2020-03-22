@@ -2,6 +2,13 @@
 ## TTCN-3 Language Support for Visual Studio Code
 ## Change Log
 
+#### 0.14.0
+- Fixed missing highlight for arithmetic operators
+- Fixed incorrect highlight for unmap keyword
+- Fixed inconsistent highlighting for user-defined keywords
+- Added an exception for keywords class, configuration
+- Improve snippets
+
 #### 0.13.0
 - Fixed [issue](https://github.com/ealap/vscode-language-ttcn/issues/26) with missing grammar for type parameterization
 - Reworked matching escape characters inside strings
