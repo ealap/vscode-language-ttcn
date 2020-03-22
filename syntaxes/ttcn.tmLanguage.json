@@ -72,7 +72,7 @@
                 },
                 {
                     "name": "keyword.other.ttcn",
-                    "match": "(?x) \\b(char|charstring|class|component|configuration|conjunct|cont|continue|control)\\b"
+                    "match": "(?x) \\b(char|charstring|component|conjunct|cont|continue|control)\\b"
                 },
                 {
                     "name": "keyword.other.ttcn",
@@ -132,7 +132,7 @@
                 },
                 {
                     "name": "keyword.other.ttcn",
-                    "match": "(?x) \\b(universal|unmap|until)\\b"
+                    "match": "(?x) \\b(universal|until)\\b"
                 },
                 {
                     "name": "keyword.other.ttcn",
@@ -141,6 +141,11 @@
                 {
                     "name": "keyword.other.ttcn",
                     "match": "(?x) \\b(wait|with)\\b"
+                },
+                {
+                    "comment": "Custom ambiguous keywords",
+                    "name": "keyword.other.ttcn",
+                    "match": "(?x) \\b(class|configuration)\\b(?!([\\.\\(]|\\s*:))"
                 },
                 {
                     "include": "#user-keyword"
@@ -231,7 +236,7 @@
                 },
                 {
                     "name": "entity.name.method.ttcn",
-                    "match": "(?x) \\b(unichar2int|unichar2oct|union)\\b"
+                    "match": "(?x) \\b(unichar2int|unichar2oct|union|unmap)\\b"
                 },
                 {
                     "name": "entity.name.method.ttcn",
@@ -321,7 +326,7 @@
                     "match": "(?<=[\\[])\\s*([[:alpha:]][[:word:]\\-\\+[:space:]]*)\\s*(?=[\\]])"
                 },
                 {
-                    "name": "keyword.other.class.square.dot.ttcn",
+                    "name": "entity.name.function.square.dot.ttcn",
                     "match": "(?<=[\\{\\(\\[\\][:space:]\\;]|^)([[:alpha:]][[:word:]]*)(?=\\[\\S+\\][\\.])"
                 },
                 {
@@ -334,11 +339,11 @@
                 },
                 {
                     "name": "keyword.other.method.dot.ttcn",
-                    "match": "(?<=[\\.])(?!infinity|not_a_number)([[:alpha:]][[:word:]]*)\\s*(?=[\\s])"
+                    "match": "(?<=[\\.])(?!infinity|not_a_number)([[:alpha:]][[:word:]]*)\\s*(?=[\\s\\.\\,\\)\\]])"
                 },
                 {
                     "name": "entity.name.method.round.ttcn",
-                    "match": "(?<=^|[[:space:]\\{\\(\\[\\.])([[:alpha:]][[:word:]]*)\\s*(?=[\\(])(?!\\s*\\S+\\s*\\.\\.)"
+                    "match": "(?<=^|[[:space:]\\{\\(\\[\\.])(?!\\+|mod|rem|not|and|or|xor|not4b|and4b|or4b|xor4b)([[:alpha:]][[:word:]]*)\\s*(?=[\\(])(?!\\s*\\S+\\s*\\.\\.)"
                 }
             ]
         },
@@ -424,9 +429,14 @@
                     "match": "\\.{2}"
                 },
                 {
-                    "comment": "arithmetic operators [+-*/] (mod,rem)",
+                    "comment": "arithmetic operators [+-*/]",
                     "name": "keyword.operator.arithmetic.ttcn",
-                    "match": "\\b\\s*(\\+|-|\\*|/|mod|rem)\\s*\\b"
+                    "match": "[\\+\\-\\*\\/](?![\\*\\/])"
+                },
+                {
+                    "comment": "arithmetic operators (mod, rem)",
+                    "name": "keyword.operator.arithmetic.ttcn",
+                    "match": "(\\b(mod|rem)\\b)"
                 },
                 {
                     "comment": "string operators [&]",
