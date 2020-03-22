@@ -321,7 +321,7 @@
                     "match": "(?<=[\\[])\\s*([[:alpha:]][[:word:]\\-\\+[:space:]]*)\\s*(?=[\\]])"
                 },
                 {
-                    "name": "keyword.other.class.square.dot.ttcn",
+                    "name": "entity.name.function.square.dot.ttcn",
                     "match": "(?<=[\\{\\(\\[\\][:space:]\\;]|^)([[:alpha:]][[:word:]]*)(?=\\[\\S+\\][\\.])"
                 },
                 {
@@ -334,7 +334,7 @@
                 },
                 {
                     "name": "keyword.other.method.dot.ttcn",
-                    "match": "(?<=[\\.])(?!infinity|not_a_number)([[:alpha:]][[:word:]]*)\\s*(?=[\\s])"
+                    "match": "(?<=[\\.])(?!infinity|not_a_number)([[:alpha:]][[:word:]]*)\\s*(?=[\\s\\.\\,\\)\\]])"
                 },
                 {
                     "name": "entity.name.method.round.ttcn",
